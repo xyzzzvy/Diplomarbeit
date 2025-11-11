@@ -1,0 +1,189 @@
+/* ==============================
+   Global Pixel Theme
+   ============================== */
+
+/* Font – Retro Pixel Look */
+@font-face {
+  font-family: 'Workbench';
+  src: url('assets/Workbench-Variable.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Farb-Variablen */
+:root {
+  --font-pixel: 'Workbench', monospace;
+  --bg: #662222;
+  --bg-light: #662222;
+  --text: #F5DAA7;
+  --text-secondary: #F5DAA7;
+  --border: #842A3B;
+  --shadow: #A3485A;
+  --accent-dark: #662222;
+  --accent-hover: #662222;
+  --error: #ff4444;
+}
+
+/* ==============================
+   Grundlayout
+   ============================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  letter-spacing: 0.5px; /* wirkt sauberer für Pixel-Schrift */
+  background:
+    radial-gradient(transparent 60%, rgba(255,255,255,0.02)) 0 0/48px 48px,
+    var(--bg);
+}
+
+/* Damit alle Texte und Buttons denselben Font haben */
+*, button, input, select, textarea {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+/* Scrollbar im Retro-Stil */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #662222;
+}
+
+/* ==============================
+   Standard Pixel-Stile
+   ============================== */
+
+/* Grüne Rahmenbox */
+.pixel-box {
+  background: var(--bg-light);
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0 #A3485A, 6px 6px 0 var(--shadow);
+  border-radius: 8px;
+  padding: 20px;
+  color: var(--text);
+}
+
+/* Standard-Button */
+.pixel-btn {
+  background: var(--text);
+  color: #A3485A;
+  border: none;
+  padding: 12px 20px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.pixel-btn:hover {
+  transform: scale(1.05);
+}
+.pixel-btn:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0 var(--shadow);
+}
+
+/* Dunkler Menü-Button (z. B. Login) */
+.pixel-btn-dark {
+  background: var(--accent-dark);
+  color: #e5e7eb;
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-family: var(--font-pixel);
+}
+.pixel-btn-dark:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Eingabefelder */
+.pixel-input,
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #111;
+  color: #e5e7eb;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+}
+
+/* Checkboxen */
+.pixel-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.pixel-check input {
+  transform: translateY(2px) scale(1.2);
+}
+.pixel-check a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+}
+.pixel-check a:hover {
+  color: var(--text);
+}
+
+/* Headings */
+.pixel-title {
+  text-align: center;
+  font-size: 16px;
+  margin: 6px 0 18px;
+  text-shadow: 0 0 10px var(--text);
+}
+
+/* ==============================
+   Input mit "Auge"
+   ============================== */
+
+.field {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 36px 10px 12px; /* Platz für das Auge */
+  background: #111;
+  color: #e5e7eb;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+}
+
+/* Icon im Feld (z. B. Auge) */
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+.eye-btn:hover {
+  opacity: 0.8;
+}

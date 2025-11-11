@@ -1,0 +1,103 @@
+.ca-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--border);
+  background: #0a0a0a;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.logo { font-size: 14px; }
+
+.pawn {
+  font-size: 16px;
+  text-shadow: 0 0 8px var(--text);
+}
+
+/* Einloggen-Button (Top rechts) */
+.login-btn {
+  font-size: 12px;
+  padding: 8px 12px;
+  color: #e5e7eb;
+  background: var(--accent-dark);
+  border: 2px solid var(--border);
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--shadow);
+  transition: transform .1s, background .2s;
+}
+.login-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Center Content */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+.pawn-big {
+  font-size: 80px;
+  text-shadow: 0 0 10px var(--text);
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Hauptbutton – gleich wie Start-Button */
+.create-btn {
+  background: var(--text);
+  color: #000;
+  padding: 12px 24px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 4px 4px 0 var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.create-btn:hover { transform: scale(1.05); }
+
+/* Mobile */
+@media (max-width: 520px) {
+  .logo { font-size: 12px; }
+  .pawn-big { font-size: 64px; }
+  h1 { font-size: 14px; }
+}
+
+/* Logo-Bild oben in der Sidebar */
+.logo-img {
+  width: 120px;
+  margin: 0 auto 10px;
+  display: block;
+  image-rendering: pixelated;  /* passt zum Pixel-Style */
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
+  background-color: #111;
+  padding: 8px;
+  border-radius: 8px;
+}

@@ -1,0 +1,65 @@
+<div class="reg-layout">
+  <header class="topbar">
+    <a class="brand" routerLink="/home">
+      <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+    </a>
+    <a class="login-btn" routerLink="/login">Login</a>
+  </header>
+
+  <!-- Karte -->
+  <main class="card">
+    <h1>Registration</h1>
+
+    <!-- Level -->
+    <label class="lbl">How good are you?</label>
+    <select class="input">
+      <option value="" disabled selected>Please choose…</option>
+      <option value="new">Completely new</option>
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Advanced</option>
+      <option value="tournament">Tournament player</option>
+    </select>
+
+    <!-- Name -->
+    <div class="row">
+      <div class="col">
+        <label class="lbl">First name</label>
+        <input class="input" type="text" placeholder="First name" />
+      </div>
+      <div class="col">
+        <label class="lbl">Last name</label>
+        <input class="input" type="text" placeholder="Last name" />
+      </div>
+    </div>
+
+    <!-- Email -->
+    <label class="lbl">E-Mail</label>
+    <input class="input" type="email" placeholder="email" />
+
+    <!-- Passwort -->
+    <label class="lbl">Password</label>
+    <div class="field">
+      <input
+        class="input"
+        [type]="showPswd ? 'text' : 'password'"
+        placeholder="••••••••"
+      />
+      <button
+        type="button"
+        class="eye-btn"
+        (click)="togglePswd()"
+        aria-label="Toggle password visibility">
+        <span *ngIf="!showPswd">👁️</span>
+        <span *ngIf="showPswd">🙈</span>
+      </button>
+    </div>
+
+    <!-- Checkboxen -->
+    <label class="check">
+      <input type="checkbox" />
+      <span>I have read and accepted the <a routerLink="/agb">terms of service</a> and the <a routerLink="/impressum">imprint</a>.</span>
+    </label>
+
+    <button class="primary" type="button">Create account</button>
+  </main>
+</div>

@@ -1,0 +1,44 @@
+.friends-layout{
+  min-height:100vh; width:100vw; display:flex; flex-direction:column;
+  background:
+    radial-gradient(transparent 60%, rgba(255,255,255,.02)) 0 0/48px 48px,
+    var(--bg);
+  color:var(--text); font-family:var(--font-pixel);
+}
+
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px; border-bottom:2px solid var(--border); background:#0a0a0a;
+}
+.brand{ display:inline-flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; }
+.logo{ font-size:14px; }
+.pawn{ font-size:16px; text-shadow:0 0 8px var(--text); }
+
+.friends{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:22px; }
+
+/* Board */
+.board{ padding:8px; }
+.row{ display:flex; }
+.square{
+  width:64px; height:64px;
+  display:flex; align-items:center; justify-content:center;
+  background:#F5DAA7;                 /* helle Felder – an dein Schema angepasst */
+  border:1px solid rgba(0,0,0,.25);
+}
+.square.dark{ background:#842A3B; }    /* dunkle Felder – an dein Schema angepasst */
+
+.square:hover{ outline:2px solid rgba(255,255,255,.15); }
+
+/* Pieces (Unicode) */
+.piece{
+  font-size:42px; line-height:1; cursor:grab; user-select:none;
+  filter: drop-shadow(1px 1px 0 #000);
+}
+.piece:active{ cursor:grabbing; }
+
+/* Mobile */
+@media (max-width: 560px){
+  .square{ width:44px; height:44px; }
+  .piece{ font-size:30px; }
+  .logo{ font-size:12px; }
+}

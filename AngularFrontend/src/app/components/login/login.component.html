@@ -1,0 +1,45 @@
+<div class="login-layout">
+  <header class="topbar">
+    <a class="brand" routerLink="/home">
+      <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+    </a>
+  </header>
+
+  <main class="card">
+    <h1>Log In</h1>
+
+    <!-- Username / Email -->
+    <div class="field">
+      <input class="input" type="text" placeholder="E-Mail" />
+    </div>
+
+    <!-- Password -->
+    <label class="lbl">Password</label>
+    <div class="field">
+      <input
+        class="input"
+        [type]="showpswd ? 'text' : 'password'"
+        placeholder="••••••••"
+      />
+      <button
+        type="button"
+        class="eye-btn"
+        (click)="toggleShowpswd()"
+        aria-label="Toggle password visibility">
+        <span *ngIf="!showpswd">👁️</span>
+        <span *ngIf="showpswd">🙈</span>
+      </button>
+    </div>
+
+    <div class="row options">
+      <label class="check">
+        <input type="checkbox" />
+        <span>Remember me</span>
+      </label>
+
+      <a class="link" routerLink="/forgottPassword">Forgot password?</a>
+    </div>
+
+    <button class="primary" type="button">Log In</button>
+  </main>
+</div>

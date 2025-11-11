@@ -1,0 +1,20 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidenav">
+    <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+    <button class="menu-btn" [routerLink]="['/playAgainstBots']">🤖 Play against bots</button>
+    <button class="menu-btn" [routerLink]="['/playAgainstFriends']">👥 Play against friends</button>
+    <button class="menu-btn" [routerLink]="['/playAgainstOther']">🌍 Play against other</button>
+    <button class="menu-btn" [routerLink]="['/tournaments']">🏆 Tournaments</button>
+    <button class="menu-btn" [routerLink]="['/aicoach']">🎓 AI coach</button>
+  </aside>
+
+  <!-- Hauptinhalt -->
+  <main class="homepage">
+    <div class="pawn">♟</div>
+    <h1>Play chess.<br>Improve you chess game.<br>Have fun!</h1>
+    <Button class="start-btn" [routerLink]="['/createAccount']">
+      ▶ START
+    </Button>
+  </main>
+</div>

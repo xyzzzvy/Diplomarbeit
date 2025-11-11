@@ -1,0 +1,32 @@
+<div class="friends-layout">
+  <header class="topbar">
+    <a class="brand" routerLink="/home">
+      <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+    </a>
+  </header>
+
+  <main class="friends">
+    <h1 class="pixel-title">Play against Friends</h1>
+
+    <div class="board pixel-box">
+      <div class="row" *ngFor="let row of board; let r = index">
+        <div
+          class="square"
+          *ngFor="let cell of row; let c = index"
+          [class.dark]="(r + c) % 2 === 1"
+          (dragover)="allowDrop($event)"
+          (drop)="drop(r,c,$event)"
+        >
+          <span
+            *ngIf="cell"
+            class="piece"
+            draggable="true"
+            (dragstart)="dragStart(r,c,$event)"
+          >{{ cell }}</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="pixel-btn" (click)="resetBoard()">Reset board</button>
+  </main>
+</div>
