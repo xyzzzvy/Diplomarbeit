@@ -42,3 +42,16 @@
   .piece{ font-size:30px; }
   .logo{ font-size:12px; }
 }
+
+/* Logo-Bild oben in der Sidebar */
+.logo-img {
+  width: 120px;
+  margin: 0 auto 10px;
+  display: block;
+  image-rendering: pixelated;  /* passt zum Pixel-Style */
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
+  background-color: #111;
+  padding: 8px;
+  border-radius: 8px;
+}
