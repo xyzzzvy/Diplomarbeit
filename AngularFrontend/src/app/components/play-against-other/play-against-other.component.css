@@ -1,0 +1,177 @@
+.friends-layout {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  background:
+    radial-gradient(transparent 60%, rgba(255,255,255,.02)) 0 0/48px 48px,
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-pixel);
+
+  /* Brett-Werte wie vorher */
+  --square-light: #F5DAA7;  /* helles beige */
+  --square-dark:  #842A3B;  /* dunkles weinrot */
+
+  /* klassische Figuren */
+  --piece-white: #ffffff;
+  --piece-black: #000000;
+}
+
+.friends {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertikal zentriert */
+  align-items: center;       /* horizontal zentriert */
+  gap: 22px;
+  padding: 22px;
+}
+
+/* =========================================
+   Brett
+   ========================================= */
+.board {
+  padding: 8px;
+}
+
+.row {
+  display: flex;
+}
+
+.square {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--square-light);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.square.dark {
+  background: var(--square-dark);
+}
+
+.square:hover {
+  outline: 2px solid rgba(255,255,255,0.15);
+}
+
+/* =========================================
+   Figuren
+   ========================================= */
+
+.piece {
+  font-size: 42px;
+  line-height: 1;
+  user-select: none;
+  cursor: grab;
+  filter: drop-shadow(1px 1px 0 #000);
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans",
+  var(--font-pixel), monospace;
+  color: inherit;
+}
+
+/* Weiß & Schwarz korrekt anwenden */
+.piece.white {
+  color: var(--piece-white) !important;
+}
+.piece.black {
+  color: var(--piece-black) !important;
+}
+
+.piece:active {
+  cursor: grabbing;
+}
+
+/* =========================================
+   Topbar / Logo / Layout
+   ========================================= */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--border);
+  background: #0a0a0a;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 120px;
+  margin: 0 auto 10px;
+  display: block;
+  image-rendering: pixelated;
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
+  background-color: #111;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* =========================================
+   Mobile
+   ========================================= */
+/* Tablet */
+@media (max-width: 900px) {
+  .square {
+    width: 56px;
+    height: 56px;
+  }
+  .piece {
+    font-size: 34px;
+  }
+}
+
+/* Handy */
+@media (max-width: 600px) {
+  .friends {
+    padding: 16px;
+  }
+
+  .square {
+    width: 44px;
+    height: 44px;
+  }
+
+  .piece {
+    font-size: 28px;
+  }
+
+  .pixel-title {
+    font-size: 16px;
+  }
+}
+
+/* Sehr kleine Geräte */
+@media (max-width: 400px) {
+  .square {
+    width: 36px;
+    height: 36px;
+  }
+
+  .piece {
+    font-size: 22px;
+  }
+}
+
+.arrow {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.95;
+  pointer-events: none;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.arrow-white { color: #ffffff; }
+.arrow-black { color: #111111; }

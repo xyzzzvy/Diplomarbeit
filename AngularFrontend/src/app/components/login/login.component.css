@@ -97,3 +97,36 @@
   padding: 8px;
   border-radius: 8px;
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(100% - 24px);
+    margin: 24px auto;
+    padding: 18px 14px;
+  }
+
+  .pixel-title {
+    font-size: 16px;
+  }
+
+  .lbl {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: calc(100% - 16px);
+    margin: 16px auto;
+    padding: 14px 12px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pixel-title {
+    font-size: 14px;
+  }
+}

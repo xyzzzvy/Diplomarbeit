@@ -88,3 +88,57 @@ h1 {
   padding: 8px;
   border-radius: 8px;
 }
+
+/* ============================
+   Responsive Homepage Layout
+   ============================ */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;         /* Sidebar oben statt links */
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidenav {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-right: none;
+    border-bottom: 2px solid var(--border);
+    gap: 8px;
+  }
+
+  .menu-btn {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .homepage {
+    padding: 24px 16px;
+  }
+
+  .pawn {
+    font-size: 56px;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+}
+
+/* Sehr kleine Geräte */
+@media (max-width: 480px) {
+  .menu-btn {
+    flex: 1 1 100%;
+    font-size: 12px;
+  }
+
+  .pawn {
+    font-size: 44px;
+  }
+
+  h1 {
+    font-size: 12px;
+  }
+}

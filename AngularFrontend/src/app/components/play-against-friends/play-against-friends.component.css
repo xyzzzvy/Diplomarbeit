@@ -121,16 +121,46 @@
 /* =========================================
    Mobile
    ========================================= */
-@media (max-width: 560px) {
+/* Tablet */
+@media (max-width: 900px) {
+  .square {
+    width: 56px;
+    height: 56px;
+  }
+  .piece {
+    font-size: 34px;
+  }
+}
+
+/* Handy */
+@media (max-width: 600px) {
+  .friends {
+    padding: 16px;
+  }
+
   .square {
     width: 44px;
     height: 44px;
   }
+
   .piece {
-    font-size: 30px;
+    font-size: 28px;
   }
-  .logo {
-    font-size: 12px;
+
+  .pixel-title {
+    font-size: 16px;
+  }
+}
+
+/* Sehr kleine Geräte */
+@media (max-width: 400px) {
+  .square {
+    width: 36px;
+    height: 36px;
+  }
+
+  .piece {
+    font-size: 22px;
   }
 }
 

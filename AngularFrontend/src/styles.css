@@ -36,6 +36,7 @@ html, body {
   font-family: var(--font-pixel);
   font-size: 14px;
   letter-spacing: 0.5px; /* wirkt sauberer für Pixel-Schrift */
+  line-height: 1.4;      /* bessere Lesbarkeit */
   background:
     radial-gradient(transparent 60%, rgba(255,255,255,0.02)) 0 0/48px 48px,
     var(--bg);
@@ -47,6 +48,23 @@ html, body {
   font-size: 14px;
   color: var(--text);
   box-sizing: border-box;
+}
+
+/* Globaler, gut sichtbarer Fokus für Tastatur-Nutzer */
+:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+
+/* Falls Browser :focus-visible nicht unterstützt:
+   normale :focus-Umsetzung nur für typische interaktive Elemente */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
 }
 
 /* Scrollbar im Retro-Stil */
@@ -62,10 +80,27 @@ html, body {
 }
 
 /* ==============================
+   Screenreader Utility
+   ============================== */
+
+/* Für Text, der nur von Screenreadern gelesen werden soll
+   (z.B. auf Buttons zusätzlich "Open registration page") */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==============================
    Standard Pixel-Stile
    ============================== */
 
-/* Grüne Rahmenbox */
+/* Rahmenbox */
 .pixel-box {
   background: var(--bg-light);
   border: 2px solid var(--border);
@@ -146,7 +181,7 @@ html, body {
 /* Headings */
 .pixel-title {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px; /* minimal größer für bessere Lesbarkeit */
   margin: 6px 0 18px;
   text-shadow: 0 0 10px var(--text);
 }
@@ -186,4 +221,11 @@ html, body {
 }
 .eye-btn:hover {
   opacity: 0.8;
+}
+
+/* Globale Anpassung für sehr kleine Bildschirme */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
 }
