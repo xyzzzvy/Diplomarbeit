@@ -142,3 +142,15 @@ h1 {
     font-size: 12px;
   }
 }
+
+.accessibility-toggle {
+  margin-top: auto;              /* Button nach ganz unten schieben */
+  background: #333;
+  color: #f5daa7;
+  border-color: var(--border);
+}
+
+.accessibility-toggle[aria-pressed="true"] {
+  background: #f5daa7;
+  color: #662222;
+}

@@ -7,6 +7,17 @@
     <button class="menu-btn" [routerLink]="['/playAgainstOther']">🌍 Play against other</button>
     <button class="menu-btn" [routerLink]="['/tournaments']">🏆 Tournaments</button>
     <button class="menu-btn" [routerLink]="['/aicoach']">🎓 AI coach</button>
+
+    <!-- ACCESSIBILITY-TOGGLE ganz unten -->
+    <button
+      class="menu-btn accessibility-toggle"
+      type="button"
+      (click)="toggleAccessibility()"
+      [attr.aria-pressed]="accessibility.isAccessible"
+    >
+      ♿
+      {{ accessibility.isAccessible ? 'Accessible Version' : 'Normal Version' }}
+    </button>
   </aside>
 
   <!-- Hauptinhalt -->

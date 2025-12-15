@@ -42,12 +42,92 @@ html, body {
     var(--bg);
 }
 
-/* Damit alle Texte und Buttons denselben Font haben */
-*, button, input, select, textarea {
+body.accessible-mode {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Standard: Pixel-Look */
+body:not(.accessible-mode) *,
+body:not(.accessible-mode) button,
+body:not(.accessible-mode) input,
+body:not(.accessible-mode) select,
+body:not(.accessible-mode) textarea {
   font-family: var(--font-pixel);
   font-size: 14px;
   color: var(--text);
   box-sizing: border-box;
+}
+
+
+/* Barrierefrei: normale, gut lesbare Schrift, größer */
+body.accessible-mode *,
+body.accessible-mode button,
+body.accessible-mode input,
+body.accessible-mode select,
+body.accessible-mode textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text); /* gleiche Farbe wie vorher */
+  box-sizing: border-box;
+}
+
+body.accessible-mode .pixel-box,
+body.accessible-mode .pixel-btn,
+body.accessible-mode .pixel-btn-dark {
+  box-shadow: none;        /* → ruhiger, barrierefreier */
+  border-radius: 6px;
+  text-transform: none;    /* besser lesbar */
+}
+
+body.accessible-mode .pixel-btn,
+body.accessible-mode .pixel-btn-dark {
+  font-size: 22px !important;          /* größerer Text */
+  padding: 18px 26px !important;        /* größerer Klickbereich */
+  border-width: 3px !important;
+  box-shadow: none !important;          /* ruhiger, barrierefrei */
+}
+
+body.accessible-mode .pixel-input,
+body.accessible-mode .input {
+  font-size: 20px !important;
+  padding: 14px 16px !important;        /* größere Textbox */
+  border-width: 3px !important;
+}
+
+body.accessible-mode .pixel-title,
+body.accessible-mode h1,
+body.accessible-mode h2 {
+  font-size: 28px !important;
+  text-shadow: none !important;         /* barrierefrei besser */
+}
+
+body.accessible-mode :focus-visible {
+  outline: 4px solid var(--text);
+  outline-offset: 4px;
+}
+
+body.accessible-mode p,
+body.accessible-mode span,
+body.accessible-mode li,
+body.accessible-mode a,
+body.accessible-mode div,
+body.accessible-mode section,
+body.accessible-mode article {
+  font-size: 20px !important;
+  line-height: 1.8 !important;
+}
+
+body.accessible-mode ul,
+body.accessible-mode ol {
+  padding-left: 28px !important;
+  font-size: 20px !important;
+}
+
+body.accessible-mode a {
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 /* Globaler, gut sichtbarer Fokus für Tastatur-Nutzer */
@@ -55,6 +135,15 @@ html, body {
   outline: 3px solid var(--text);
   outline-offset: 2px;
 }
+
+/* Schachfigur (z. B. in Homepage & Create Account) im barrierefreien Modus vergrößern */
+body.accessible-mode .pawn,
+body.accessible-mode .pawn-big,
+body.accessible-mode .center-piece {
+  font-size: 120px !important;   /* deutlich größer */
+  text-shadow: none !important;  /* barrierefrei ruhiger */
+}
+
 
 /* Falls Browser :focus-visible nicht unterstützt:
    normale :focus-Umsetzung nur für typische interaktive Elemente */
@@ -227,5 +316,38 @@ textarea:focus {
 @media (max-width: 480px) {
   body {
     font-size: 12px;
+  }
+}
+
+/* Barrierefrei: weniger harte Pixel-Schatten, mehr Klarheit */
+body.accessible-mode .pixel-box {
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+body.accessible-mode .pixel-btn,
+body.accessible-mode .pixel-btn-dark {
+  box-shadow: none;
+  border-radius: 4px;
+  text-transform: none;
+}
+
+/* Fokus noch klarer im barrierefreien Modus */
+body.accessible-mode :focus-visible {
+  outline: 3px solid #ffd966;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  body.accessible-mode .pawn,
+  body.accessible-mode .pawn-big {
+    font-size: 90px !important;
+  }
+}
+
+@media (min-width: 601px) {
+  body.accessible-mode .pawn,
+  body.accessible-mode .pawn-big {
+    font-size: 130px !important;
   }
 }
