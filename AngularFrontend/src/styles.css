@@ -351,3 +351,79 @@ body.accessible-mode :focus-visible {
     font-size: 130px !important;
   }
 }
+
+/* ==============================
+   Theme Variants
+   ============================== */
+
+/* NORMAL – dein jetziges Design */
+body.theme-normal {
+  /* nichts nötig – :root ist Standard */
+}
+
+/* LIGHT MODE */
+body.theme-light {
+  /* Hintergrund */
+  --bg: #ffffff;
+  --bg-light: #f4f4f4;
+
+  /* Text */
+  --text: #111111;
+  --text-secondary: #222222;
+
+  /* Rahmen & Schatten */
+  --border: #999999;
+  --shadow: #b0b0b0;
+
+  /* Buttons */
+  --accent-dark: #fdfdfd;      /* DUNKLER Button */
+  --accent-hover: #000000;     /* Hover noch dunkler */
+
+  /* Button-Text */
+  --button-text: #ffffff;
+}
+
+body.theme-light button,
+body.theme-light .pixel-btn,
+body.theme-light .pixel-btn-dark,
+body.theme-light .menu-btn,
+body.theme-light .start-btn,
+body.theme-light .primary,
+body.theme-light .login-btn,
+body.theme-light .create-btn {
+  background: #ffffff !important;     /* immer hell */
+  color: #111111 !important;          /* immer dunkle Schrift */
+  border: 2px solid #111111 !important;
+  box-shadow: 4px 4px 0 #bdbdbd !important;
+}
+
+/* Hover bleibt gleich (nur leicht dunkler) */
+body.theme-light button:hover,
+body.theme-light .pixel-btn:hover,
+body.theme-light .pixel-btn-dark:hover,
+body.theme-light .menu-btn:hover,
+body.theme-light .start-btn:hover,
+body.theme-light .primary:hover,
+body.theme-light .login-btn:hover,
+body.theme-light .create-btn:hover {
+  background: #f0f0f0 !important;
+}
+
+/* DARK MODE */
+body.theme-dark {
+  --bg: #0a0a0a;
+  --bg-light: #121212;
+  --text: #f2f2f2;
+  --text-secondary: #cccccc;
+  --border: #444444;
+  --shadow: #000000;
+  --accent-dark: #1a1a1a;
+  --accent-hover: #2a2a2a;
+}
+
+/* Button Textfarbe sauber steuern */
+.pixel-btn,
+.pixel-btn-dark,
+.menu-btn {
+  color: var(--button-text, #000000);
+}

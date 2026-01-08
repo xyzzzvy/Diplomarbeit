@@ -18,6 +18,10 @@
       ♿
       {{ accessibility.isAccessible ? 'Accessible Version' : 'Normal Version' }}
     </button>
+
+    <button class="menu-btn" (click)="changeTheme()">
+      🌓 Theme: {{ theme.current }}
+    </button>
   </aside>
 
   <!-- Hauptinhalt -->
