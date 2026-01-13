@@ -21,14 +21,14 @@
           <span
             *ngIf="cell"
             class="piece"
-            [class.white]="isWhite(cell)"
-            [class.black]="!isWhite(cell)"
+            [class.white]="cell.color === 'white'"
+            [class.black]="cell.color === 'black'"
             draggable="true"
-            (dragstart)="dragStart(r, c, $event)"
-            (click)="onPieceClick(r, c)"
+            (click)="onPieceClick(r,c)"
+            (dragstart)="dragStart(r,c,$event)"
           >
-        {{ cell }}
-      </span>
+            {{ cell.type }}
+          </span>
 
           <!-- Pfeil / Highlight, nur wenn kein Piece dort ist -->
           <span

@@ -73,12 +73,12 @@
   color: inherit;
 }
 
-/* Weiß & Schwarz korrekt anwenden */
+.piece.white { color: #ffffff; opacity: 1; }
+.piece.black { color: #000000; opacity: 1; }
+
 .piece.white {
-  color: var(--piece-white) !important;
-}
-.piece.black {
-  color: var(--piece-black) !important;
+  color: #ffffff;
+  text-shadow: 0 0 0 #000, 1px 1px 0 #000, -1px -1px 0 #000;
 }
 
 .piece:active {

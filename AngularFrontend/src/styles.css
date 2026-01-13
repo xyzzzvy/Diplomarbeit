@@ -22,6 +22,13 @@
   --accent-dark: #662222;
   --accent-hover: #662222;
   --error: #ff4444;
+  --btn-bg: var(--text);
+  --btn-text: #2b2b2b;          /* dunkler Text auf hellem Button */
+  --btn-border: var(--border);
+
+  --input-bg: #111;
+  --input-text: #f5daa7;
+  --input-placeholder: rgba(245, 218, 167, 0.65);
 }
 
 /* ==============================
@@ -42,23 +49,19 @@ html, body {
     var(--bg);
 }
 
+*, button, input, select, textarea {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body { color: var(--text); }
+
+
 body.accessible-mode {
   background: var(--bg);
   color: var(--text);
 }
-
-/* Standard: Pixel-Look */
-body:not(.accessible-mode) *,
-body:not(.accessible-mode) button,
-body:not(.accessible-mode) input,
-body:not(.accessible-mode) select,
-body:not(.accessible-mode) textarea {
-  font-family: var(--font-pixel);
-  font-size: 14px;
-  color: var(--text);
-  box-sizing: border-box;
-}
-
 
 /* Barrierefrei: normale, gut lesbare Schrift, größer */
 body.accessible-mode *,
@@ -201,9 +204,9 @@ textarea:focus {
 
 /* Standard-Button */
 .pixel-btn {
-  background: var(--text);
-  color: #A3485A;
-  border: none;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 2px solid var(--btn-border);
   padding: 12px 20px;
   font-family: var(--font-pixel);
   font-size: 14px;
@@ -212,22 +215,21 @@ textarea:focus {
   cursor: pointer;
   transition: transform 0.15s ease;
 }
-.pixel-btn:hover {
-  transform: scale(1.05);
-}
+.pixel-btn:hover { transform: scale(1.05); }
 .pixel-btn:active {
   transform: translateY(2px);
   box-shadow: 2px 2px 0 var(--shadow);
 }
 
+
 /* Dunkler Menü-Button (z. B. Login) */
 .pixel-btn-dark {
   background: var(--accent-dark);
-  color: #e5e7eb;
+  color: var(--text);              /* da ist hell okay */
   border: 2px solid var(--border);
   box-shadow: 4px 4px 0 var(--shadow);
-  font-family: var(--font-pixel);
 }
+
 .pixel-btn-dark:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
@@ -238,14 +240,20 @@ textarea:focus {
 .input {
   width: 100%;
   padding: 10px 12px;
-  background: #111;
-  color: #e5e7eb;
+  background: var(--input-bg);
+  color: var(--input-text);
   border: 2px solid var(--border);
   border-radius: 6px;
   outline: none;
   font-family: var(--font-pixel);
   font-size: 14px;
 }
+
+.pixel-input::placeholder,
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+
 
 /* Checkboxen */
 .pixel-check {
@@ -363,24 +371,25 @@ body.theme-normal {
 
 /* LIGHT MODE */
 body.theme-light {
-  /* Hintergrund */
   --bg: #ffffff;
   --bg-light: #f4f4f4;
 
-  /* Text */
   --text: #111111;
   --text-secondary: #222222;
 
-  /* Rahmen & Schatten */
   --border: #999999;
   --shadow: #b0b0b0;
 
-  /* Buttons */
-  --accent-dark: #fdfdfd;      /* DUNKLER Button */
-  --accent-hover: #000000;     /* Hover noch dunkler */
+  --btn-bg: #ffffff;
+  --btn-text: #111111;
+  --btn-border: #111111;
 
-  /* Button-Text */
-  --button-text: #ffffff;
+  --input-bg: #ffffff;
+  --input-text: #111111;
+  --input-placeholder: rgba(0,0,0,0.55);
+
+  --accent-dark: #ffffff;
+  --accent-hover: #f0f0f0;
 }
 
 body.theme-light button,
@@ -390,14 +399,16 @@ body.theme-light .menu-btn,
 body.theme-light .start-btn,
 body.theme-light .primary,
 body.theme-light .login-btn,
-body.theme-light .create-btn {
-  background: #ffffff !important;     /* immer hell */
-  color: #111111 !important;          /* immer dunkle Schrift */
+body.theme-light .create-btn,
+body.theme-light a.login-btn,
+body.theme-light a.create-btn {
+  background: #ffffff !important;
+  color: #111111 !important;
   border: 2px solid #111111 !important;
-  box-shadow: 4px 4px 0 #bdbdbd !important;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.25) !important;
 }
 
-/* Hover bleibt gleich (nur leicht dunkler) */
+/* Hover: minimal dunkler, bleibt aber lesbar */
 body.theme-light button:hover,
 body.theme-light .pixel-btn:hover,
 body.theme-light .pixel-btn-dark:hover,
@@ -406,7 +417,8 @@ body.theme-light .start-btn:hover,
 body.theme-light .primary:hover,
 body.theme-light .login-btn:hover,
 body.theme-light .create-btn:hover {
-  background: #f0f0f0 !important;
+  background: #f2f2f2 !important;
+  color: #111111 !important;
 }
 
 /* DARK MODE */
@@ -419,11 +431,4 @@ body.theme-dark {
   --shadow: #000000;
   --accent-dark: #1a1a1a;
   --accent-hover: #2a2a2a;
-}
-
-/* Button Textfarbe sauber steuern */
-.pixel-btn,
-.pixel-btn-dark,
-.menu-btn {
-  color: var(--button-text, #000000);
 }

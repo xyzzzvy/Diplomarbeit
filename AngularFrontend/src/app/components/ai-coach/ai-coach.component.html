@@ -1,1 +1,86 @@
-<p>ai-coach works!</p>
+<div class="coach-layout">
+  <!-- LEFT PANEL -->
+  <aside class="coach-side pixel-box" aria-label="AI Coach inputs">
+    <h2 class="side-title">AI Coach</h2>
+
+    <!-- PNG upload -->
+    <section class="side-card" aria-labelledby="png-title">
+      <h3 id="png-title" class="side-label">PNG</h3>
+
+      <label class="upload">
+        <input
+          type="file"
+          accept="image/png,image/jpeg"
+          (change)="onFileSelected($event)"
+        />
+        <span class="upload-btn pixel-btn">Choose image</span>
+        <span class="upload-hint">{{ selectedFileName || 'No file selected' }}</span>
+      </label>
+
+      <p class="side-hint">
+        Upload a board screenshot. (Later: parsing/analysis)
+      </p>
+    </section>
+
+    <!-- FEN -->
+    <section class="side-card" aria-labelledby="fen-title">
+      <h3 id="fen-title" class="side-label">FEN</h3>
+
+      <textarea
+        class="pixel-input fen"
+        rows="4"
+        placeholder="Paste FEN here…"
+        [(ngModel)]="fen"
+      ></textarea>
+
+      <button class="pixel-btn side-action" type="button" (click)="useFen()">
+        Use FEN
+      </button>
+
+      <p class="side-hint">
+        Example
+      </p>
+    </section>
+  </aside>
+
+  <!-- CHAT AREA -->
+  <main class="coach-main" aria-label="AI Coach chat">
+    <header class="coach-header pixel-box">
+      <div class="brand">
+        <span class="pawn" aria-hidden="true">♟</span>
+        <span class="title">Chess AI Mate — Coach</span>
+      </div>
+      <a class="pixel-btn-dark" routerLink="/home">Back</a>
+    </header>
+
+    <section class="chat pixel-box" aria-label="Chat messages">
+      <div class="messages" role="log" aria-live="polite">
+        <div
+          *ngFor="let m of messages"
+          class="bubble"
+          [class.user]="m.role === 'user'"
+          [class.ai]="m.role === 'ai'"
+        >
+          <div class="bubble-meta">{{ m.role === 'user' ? 'You' : 'Coach' }}</div>
+          <div class="bubble-text">{{ m.text }}</div>
+        </div>
+      </div>
+
+      <!-- INPUT BAR -->
+      <form class="composer" (ngSubmit)="send()" aria-label="Send message">
+        <input
+          class="composer-input pixel-input"
+          type="text"
+          placeholder="Ask the coach… (e.g., 'What is the best move here?')"
+          [(ngModel)]="draft"
+          name="draft"
+          autocomplete="off"
+        />
+
+        <button class="send-btn" type="submit" aria-label="Send">
+          ➤
+        </button>
+      </form>
+    </section>
+  </main>
+</div>

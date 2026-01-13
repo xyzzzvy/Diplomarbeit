@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
+type PieceColor = 'white' | 'black';
+type Piece = { type: string; color: PieceColor };
+
 @Component({
   selector: 'app-play-against-bots',
   standalone: false,
@@ -7,7 +10,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrl: './play-against-bots.component.css'
 })
 export class PlayAgainstBotsComponent implements OnInit {
-  board: string[][] = [];
+  board: (Piece | null)[][] = [];
   arrows: { symbol: string; color: 'white' | 'black' | '' }[][] = [];
   private dragFrom: { r: number; c: number } | null = null;
   private lastClicked: { r: number; c: number } | null = null;
@@ -20,18 +23,17 @@ export class PlayAgainstBotsComponent implements OnInit {
   // Brett & Setup
   // ------------------------------
   resetBoard() {
-    const empty = () => Array(8).fill('');
-    const blackBack  = ['♜','♞','♝','♛','♚','♝','♞','♜'];
-    const blackPawns = Array(8).fill('♟');
-    const whitePawns = Array(8).fill('♙');
-    const whiteBack  = ['♖','♘','♗','♕','♔','♗','♘','♖'];
+    const empty = () => Array.from({ length: 8 }, () => null as Piece | null);
+
+    const back = ['♜','♞','♝','♛','♚','♝','♞','♜'];
+    const pawns = Array(8).fill('♟');
 
     this.board = [
-      [...blackBack],
-      [...blackPawns],
+      back.map(t => ({ type: t, color: 'black' as const })),
+      pawns.map(t => ({ type: t, color: 'black' as const })),
       empty(), empty(), empty(), empty(),
-      [...whitePawns],
-      [...whiteBack]
+      pawns.map(t => ({ type: t, color: 'white' as const })),
+      back.map(t => ({ type: t, color: 'white' as const })),
     ];
 
     this.initArrows();
@@ -60,7 +62,7 @@ export class PlayAgainstBotsComponent implements OnInit {
   }
 
   private isEmpty(r: number, c: number): boolean {
-    return this.board[r][c] === '';
+    return this.board[r][c] === null;
   }
 
   // ------------------------------
@@ -87,20 +89,11 @@ export class PlayAgainstBotsComponent implements OnInit {
     const piece = this.board[from.r][from.c];
     if (!piece) { this.dragFrom = null; return; }
 
-    // einfache Verschiebung ohne Zuglogik
-    this.board[from.r][from.c] = '';
+    this.board[from.r][from.c] = null;
     this.board[r][c] = piece;
     this.dragFrom = null;
     this.lastClicked = null;
     this.clearArrows();
-  }
-
-  // ------------------------------
-  // Farben der Figuren
-  // ------------------------------
-  isWhite(ch: string): boolean {
-    // Weiße Unicode-Figuren: ♙♖♘♗♕♔
-    return '♙♖♘♗♕♔'.includes(ch);
   }
 
   // ------------------------------
@@ -129,84 +122,76 @@ export class PlayAgainstBotsComponent implements OnInit {
   // ------------------------------
   // Zug-Visualisierung (nur Pfeile, keine echte Regelprüfung)
   // ------------------------------
-  private showMovesForPiece(piece: string, r: number, c: number) {
+  private showMovesForPiece(piece: Piece, r: number, c: number) {
+    const pieceColor = piece.color;
 
-    switch (piece) {
+    switch (piece.type) {
 
-      // Bauern
-      case '♙': { // weiß – nach oben (kleinere r)
-        // 1 Schritt
-        if (this.inBounds(r - 1, c) && this.isEmpty(r - 1, c)) {
-          this.addArrow(r - 1, c, '↑', piece);
-        }
-        // 2 Schritte von der Startreihe (weiße Bauern stehen bei r=6)
-        if (r === 6 && this.isEmpty(5, c) && this.isEmpty(4, c)) {
-          this.addArrow(4, c, '↑', piece);
-        }
-        break;
-      }
-
-      case '♟': { // schwarz – nach unten (größere r)
-        if (this.inBounds(r + 1, c) && this.isEmpty(r + 1, c)) {
-          this.addArrow(r + 1, c, '↓', piece);
-        }
-        // 2 Schritte von der Startreihe (schwarze Bauern stehen bei r=1)
-        if (r === 1 && this.isEmpty(2, c) && this.isEmpty(3, c)) {
-          this.addArrow(3, c, '↓', piece);
+      // Bauern (Symbol ist bei dir immer ♟)
+      case '♟': {
+        if (pieceColor === 'white') {
+          if (this.inBounds(r - 1, c) && this.isEmpty(r - 1, c)) {
+            this.addArrow(r - 1, c, '↑', pieceColor);
+          }
+          if (r === 6 && this.isEmpty(5, c) && this.isEmpty(4, c)) {
+            this.addArrow(4, c, '↑', pieceColor);
+          }
+        } else {
+          if (this.inBounds(r + 1, c) && this.isEmpty(r + 1, c)) {
+            this.addArrow(r + 1, c, '↓', pieceColor);
+          }
+          if (r === 1 && this.isEmpty(2, c) && this.isEmpty(3, c)) {
+            this.addArrow(3, c, '↓', pieceColor);
+          }
         }
         break;
       }
 
-      // Türme / Rooks
-      case '♖':
+      // Turm
       case '♜': {
-        this.ray(r, c, -1, 0, '↑', piece);
-        this.ray(r, c,  1, 0, '↓', piece);
-        this.ray(r, c,  0,-1, '←', piece);
-        this.ray(r, c,  0, 1, '→', piece);
+        this.ray(r, c, -1, 0, '↑', pieceColor);
+        this.ray(r, c,  1, 0, '↓', pieceColor);
+        this.ray(r, c,  0,-1, '←', pieceColor);
+        this.ray(r, c,  0, 1, '→', pieceColor);
         break;
       }
 
-      // Läufer / Bishops
-      case '♗':
+      // Läufer
       case '♝': {
-        this.ray(r, c, -1,-1, '↖', piece);
-        this.ray(r, c, -1, 1, '↗', piece);
-        this.ray(r, c,  1,-1, '↙', piece);
-        this.ray(r, c,  1, 1, '↘', piece);
+        this.ray(r, c, -1,-1, '↖', pieceColor);
+        this.ray(r, c, -1, 1, '↗', pieceColor);
+        this.ray(r, c,  1,-1, '↙', pieceColor);
+        this.ray(r, c,  1, 1, '↘', pieceColor);
         break;
       }
 
-      // Dame / Queen
-      case '♕':
+      // Dame
       case '♛': {
-        this.ray(r, c, -1, 0, '↑', piece);
-        this.ray(r, c,  1, 0, '↓', piece);
-        this.ray(r, c,  0,-1, '←', piece);
-        this.ray(r, c,  0, 1, '→', piece);
-        this.ray(r, c, -1,-1, '↖', piece);
-        this.ray(r, c, -1, 1, '↗', piece);
-        this.ray(r, c,  1,-1, '↙', piece);
-        this.ray(r, c,  1, 1, '↘', piece);
+        this.ray(r, c, -1, 0, '↑', pieceColor);
+        this.ray(r, c,  1, 0, '↓', pieceColor);
+        this.ray(r, c,  0,-1, '←', pieceColor);
+        this.ray(r, c,  0, 1, '→', pieceColor);
+        this.ray(r, c, -1,-1, '↖', pieceColor);
+        this.ray(r, c, -1, 1, '↗', pieceColor);
+        this.ray(r, c,  1,-1, '↙', pieceColor);
+        this.ray(r, c,  1, 1, '↘', pieceColor);
         break;
       }
 
-      // König / King – ein Feld rundherum, nur freie Felder
-      case '♔':
+      // König
       case '♚': {
-        this.addIfFree(r - 1, c,     '↑', piece);
-        this.addIfFree(r + 1, c,     '↓', piece);
-        this.addIfFree(r,     c - 1, '←', piece);
-        this.addIfFree(r,     c + 1, '→', piece);
-        this.addIfFree(r - 1, c - 1, '↖', piece);
-        this.addIfFree(r - 1, c + 1, '↗', piece);
-        this.addIfFree(r + 1, c - 1, '↙', piece);
-        this.addIfFree(r + 1, c + 1, '↘', piece);
+        this.addIfFree(r - 1, c,     '↑', pieceColor);
+        this.addIfFree(r + 1, c,     '↓', pieceColor);
+        this.addIfFree(r,     c - 1, '←', pieceColor);
+        this.addIfFree(r,     c + 1, '→', pieceColor);
+        this.addIfFree(r - 1, c - 1, '↖', pieceColor);
+        this.addIfFree(r - 1, c + 1, '↗', pieceColor);
+        this.addIfFree(r + 1, c - 1, '↙', pieceColor);
+        this.addIfFree(r + 1, c + 1, '↘', pieceColor);
         break;
       }
 
-      // Springer / Knight – springen, aber nur auf freie Felder
-      case '♘':
+      // Springer
       case '♞': {
         const moves = [
           [-2, -1], [-2,  1],
@@ -218,7 +203,7 @@ export class PlayAgainstBotsComponent implements OnInit {
           const nr = r + dr;
           const nc = c + dc;
           if (this.inBounds(nr, nc) && this.isEmpty(nr, nc)) {
-            this.addArrow(nr, nc, '✶', piece);
+            this.addArrow(nr, nc, '✶', pieceColor);
           }
         }
         break;
@@ -229,34 +214,23 @@ export class PlayAgainstBotsComponent implements OnInit {
   // ------------------------------
   // Pfeile setzen
   // ------------------------------
-
-  private addArrow(r: number, c: number, arrow: string, piece: string) {
-    this.arrows[r][c] = {
-      symbol: arrow,
-      color: this.isWhite(piece) ? 'white' : 'black'
-    };
+  private addArrow(r: number, c: number, arrow: string, color: 'white' | 'black') {
+    this.arrows[r][c] = { symbol: arrow, color };
   }
 
-  // nur wenn Feld existiert und leer ist
-  private addIfFree(r: number, c: number, arrow: string, piece: string) {
+  private addIfFree(r: number, c: number, arrow: string, color: 'white' | 'black') {
     if (!this.inBounds(r, c)) return;
     if (!this.isEmpty(r, c)) return;
-    this.addArrow(r, c, arrow, piece);
+    this.addArrow(r, c, arrow, color);
   }
 
-  // Gerade / Diagonal-Linie, bricht an erster Figur ab
-  private ray(r: number, c: number, dr: number, dc: number, arrow: string, piece: string) {
+  private ray(r: number, c: number, dr: number, dc: number, arrow: string, color: 'white' | 'black') {
     for (let step = 1; step < 8; step++) {
       const nr = r + dr * step;
       const nc = c + dc * step;
       if (!this.inBounds(nr, nc)) break;
-
-      if (!this.isEmpty(nr, nc)) {
-        // andere Figur im Weg → hier stoppen, kein Pfeil auf diesem Feld
-        break;
-      }
-
-      this.addArrow(nr, nc, arrow, piece);
+      if (!this.isEmpty(nr, nc)) break;
+      this.addArrow(nr, nc, arrow, color);
     }
   }
 }
