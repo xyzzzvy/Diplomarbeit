@@ -52,7 +52,7 @@ Keep your tone casual yet professional and friendly.
     const prompt = this.buildSystemPrompt();
 
     const body = {
-      model: 'llama3',
+      "model": "llama3.1:8b",
       prompt,
       stream: false
     };
@@ -67,7 +67,7 @@ Keep your tone casual yet professional and friendly.
     const aiMsg = this.messages[this.messages.length - 1];
 
     // Step 2: call Ollama
-    this.http.post<any>('http://localhost:11434/api/generate', body)
+    this.http.post<any>('http://127.0.0.1:11434/api/generate', body)
       .subscribe({
         next: (res) => {
           // Step 3: replace placeholder text with actual AI response
