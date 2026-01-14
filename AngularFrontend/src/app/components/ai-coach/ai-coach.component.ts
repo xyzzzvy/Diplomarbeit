@@ -18,13 +18,13 @@ export class AiCoachComponent {
   private buildSystemPrompt(): string {
     return `
 You are a chess assistant tasked with helping users improve their chess skills by answering their questions in a thoughtful manner.
-Take the user's skill level into account when generating your explanation.
-
-Use the given metadata below for context. If none is given then answer using well-known chess principles.
-Metadata: (FEN: ${this.fen.trim()}, PGN: ${this.pgn.trim()})
+Cut to the chase and focus on answering the question.
 
 Answer the user question given below.
 Question: ${this.question.trim()}
+
+Use the given metadata below for context. If none is given then answer using well-known chess principles.
+Metadata: (FEN: ${this.fen.trim()}, PGN: ${this.pgn.trim()})
 
 Keep your tone casual yet professional and friendly.
   `;
@@ -41,9 +41,8 @@ Keep your tone casual yet professional and friendly.
     if (!text) return;
 
     this.messages.push({ role: 'user', text });
-    this.question = '';
-
     this.callOllama()
+    this.question = '';
   }
 
   private http = inject(HttpClient);       // modern style
@@ -60,7 +59,7 @@ Keep your tone casual yet professional and friendly.
     // Step 1: push a temporary "AI is generating answer..." message
     this.messages.push({
       role: 'ai',
-      text: `Please wait a minute. Model is generating answer… Metadata received: FEN:(${this.fen.trim()}) PGN: (${this.pgn.trim()})`,
+      text: `Please wait a minute. Model is generating answer… FEN:(${this.fen.trim()}) PGN: (${this.pgn.trim()}) Question: (${this.question})`,
     });
 
     // Keep a reference to this message so we can replace it
