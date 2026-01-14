@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {provideHttpClient} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +17,8 @@ import { AgbComponent } from './components/agb/agb.component';
 import { ImpressumComponent } from './components/impressum/impressum.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgottPasswordComponent } from './components/login/forgott-password/forgott-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -40,5 +43,6 @@ import { ForgottPasswordComponent } from './components/login/forgott-password/fo
     AppRoutingModule,
   ],
   bootstrap: [AppComponent],
+  providers: [provideHttpClient()]
 })
 export class AppModule {}

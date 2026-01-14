@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject } from '@angular/core';
 
 type Msg = { role: 'user' | 'ai'; text: string };
 
@@ -10,25 +12,77 @@ type Msg = { role: 'user' | 'ai'; text: string };
 })
 export class AiCoachComponent {
   fen = '';
-  draft = '';
-  selectedFileName = '';
+  pgn = '';
+  question = '';
+
+  private buildSystemPrompt(): string {
+    return `
+You are a chess assistant tasked with helping users improve their chess skills by answering their questions in a thoughtful manner.
+Take the user's skill level into account when generating your explanation.
+
+Use the given metadata below for context. If none is given then answer using well-known chess principles.
+Metadata: (FEN: ${this.fen.trim()}, PGN: ${this.pgn.trim()})
+
+Answer the user question given below.
+Question: ${this.question.trim()}
+
+Keep your tone casual yet professional and friendly.
+  `;
+  }
+
 
   messages: Msg[] = [
-    { role: 'ai', text: 'Hi! Send me a FEN or upload a PNG, and ask your question.' },
-    { role: 'user', text: 'Can you help me find a good plan?' },
+    { role: 'ai', text: 'Hi! Ask your chess-related question! You can add FEN and PGN for additional context.' },
+    //{ role: 'user', text: 'What are good basic principles to learn as a beginner?' },
   ];
 
   send() {
-    const text = (this.draft || '').trim();
+    const text = (this.question || '').trim();
     if (!text) return;
 
     this.messages.push({ role: 'user', text });
-    this.draft = '';
+    this.question = '';
 
-    // Placeholder answer (später echte AI Logik)
-    this.messages.push({ role: 'ai', text: 'Got it. (Placeholder) I will analyze this position soon.' });
+    this.callOllama()
   }
 
+  private http = inject(HttpClient);       // modern style
+
+  callOllama() {
+    const prompt = this.buildSystemPrompt();
+
+    const body = {
+      model: 'llama3',
+      prompt,
+      stream: false
+    };
+
+    // Step 1: push a temporary "AI is generating answer..." message
+    this.messages.push({
+      role: 'ai',
+      text: 'Model is generating answer…'
+    });
+
+    // Keep a reference to this message so we can replace it
+    const aiMsg = this.messages[this.messages.length - 1];
+
+    // Step 2: call Ollama
+    this.http.post<any>('http://localhost:11434/api/generate', body)
+      .subscribe({
+        next: (res) => {
+          // Step 3: replace placeholder text with actual AI response
+          aiMsg.text = res.response || '(No response from AI)';
+        },
+        error: (err) => {
+          console.error('Ollama error', err);
+          aiMsg.text = 'Error contacting Ollama.';
+        }
+      });
+  }
+
+
+
+  /*
   useFen() {
     const f = (this.fen || '').trim();
     if (!f) return;
@@ -46,4 +100,5 @@ export class AiCoachComponent {
       this.messages.push({ role: 'ai', text: 'Nice. (Placeholder) I will analyze the image.' });
     }
   }
+  */
 }

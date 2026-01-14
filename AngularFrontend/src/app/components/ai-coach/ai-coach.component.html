@@ -4,21 +4,20 @@
     <h2 class="side-title">AI Coach</h2>
 
     <!-- PNG upload -->
-    <section class="side-card" aria-labelledby="png-title">
-      <h3 id="png-title" class="side-label">PNG</h3>
+    <section class="side-card" aria-labelledby="pgn-title">
+      <h3 id="pgn-title" class="side-label">PGN</h3>
 
       <label class="upload">
-        <input
-          type="file"
-          accept="image/png,image/jpeg"
-          (change)="onFileSelected($event)"
-        />
-        <span class="upload-btn pixel-btn">Choose image</span>
-        <span class="upload-hint">{{ selectedFileName || 'No file selected' }}</span>
+        <textarea
+          class="pixel-input pgn"
+          rows="4"
+          placeholder="Paste PGN here…"
+          [(ngModel)]="pgn"
+        ></textarea>
       </label>
 
       <p class="side-hint">
-        Upload a board screenshot. (Later: parsing/analysis)
+        The text here will be used in model prompt.
       </p>
     </section>
 
@@ -33,12 +32,8 @@
         [(ngModel)]="fen"
       ></textarea>
 
-      <button class="pixel-btn side-action" type="button" (click)="useFen()">
-        Use FEN
-      </button>
-
       <p class="side-hint">
-        Example
+        The text here will be used in model prompt.
       </p>
     </section>
   </aside>
@@ -72,7 +67,7 @@
           class="composer-input pixel-input"
           type="text"
           placeholder="Ask the coach… (e.g., 'What is the best move here?')"
-          [(ngModel)]="draft"
+          [(ngModel)]="question"
           name="draft"
           autocomplete="off"
         />
