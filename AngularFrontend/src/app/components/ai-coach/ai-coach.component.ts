@@ -60,7 +60,7 @@ Keep your tone casual yet professional and friendly.
     // Step 1: push a temporary "AI is generating answer..." message
     this.messages.push({
       role: 'ai',
-      text: 'Model is generating answer…'
+      text: `Please wait a minute. Model is generating answer… Metadata received: FEN:(${this.fen.trim()}) PGN: (${this.pgn.trim()})`,
     });
 
     // Keep a reference to this message so we can replace it
