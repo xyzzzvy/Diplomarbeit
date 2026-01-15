@@ -15,7 +15,7 @@ export class AiCoachComponent {
   pgn = '';
   question = '';
 
-  private buildSystemPrompt(): string {
+  private buildSystemPromptBasic(): string {
     return `
 You are a chess assistant tasked with helping users improve their chess skills by answering their questions in a thoughtful manner.
 Cut to the chase and focus on answering the question.
@@ -29,6 +29,17 @@ Metadata: (FEN: ${this.fen.trim()}, PGN: ${this.pgn.trim()})
 Keep your tone casual yet professional and friendly.
   `;
   }
+
+  private buildSystemPromptLlama(): string {
+    const instruction = `You are a chess assistant tasked with helping users improve their chess skills by answering their questions in a thoughtful manner. Cut to the chase and focus on answering the question. Answer the user question given below: ${this.question.trim()}`;
+
+    // Wrap metadata in the input format your fine-tuned model expects
+    const input = `[pgn: ${this.pgn.trim()}] [fen: ${this.fen.trim()}]`;
+
+    // Build the final instruction-tuned prompt
+    return `[INST] ${instruction} ${input} [/INST]`;
+  }
+
 
 
   messages: Msg[] = [
@@ -48,10 +59,10 @@ Keep your tone casual yet professional and friendly.
   private http = inject(HttpClient);       // modern style
 
   callOllama() {
-    const prompt = this.buildSystemPrompt();
+    const prompt = this.buildSystemPromptLlama();
 
     const body = {
-      "model": "llama3.1:8b",
+      "model": "chess-ai-coach-v1:latest",
       prompt,
       stream: false
     };
@@ -70,7 +81,7 @@ Keep your tone casual yet professional and friendly.
       .subscribe({
         next: (res) => {
           // Step 3: replace placeholder text with actual AI response
-          aiMsg.text = res.response || '(No response from AI)';
+          aiMsg.text = res.response;
         },
         error: (err) => {
           console.error('Ollama error', err);
