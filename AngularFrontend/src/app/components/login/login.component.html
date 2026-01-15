@@ -10,7 +10,7 @@
 
     <!-- Username / Email -->
     <div class="field">
-      <input class="input" type="text" placeholder="E-Mail" />
+      <input class="input" [(ngModel)]="username" type="text" placeholder="Username" />
     </div>
 
     <!-- Password -->
@@ -19,6 +19,7 @@
       <input
         class="input"
         [type]="showpswd ? 'text' : 'password'"
+        [(ngModel)]="password"
         placeholder="••••••••"
       />
       <button
@@ -37,9 +38,9 @@
         <span>Remember me</span>
       </label>
 
-      <a class="link" routerLink="/forgottPassword">Forgot password?</a>
+      <!--<a class="link" routerLink="/forgottPassword">Forgot password?</a>-->
     </div>
 
-    <button class="primary" type="button">Log In</button>
+    <button class="primary" type="button" (click)="login()">Log In</button>
   </main>
 </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject } from '@angular/core';
 
 @Component({
   standalone: false,
@@ -8,8 +10,36 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
   showpswd = false;
+  password = '';
+  username = '';
+
 
   toggleShowpswd() {
     this.showpswd = !this.showpswd;
+  }
+
+  private http = inject(HttpClient);
+
+  login(): void {
+    const body = {
+      username: this.username,
+      password: this.password
+    };
+
+    this.http.post<any>('http://127.0.0.1:3000/api/auth/login', body, {
+      withCredentials: true
+    })
+      .subscribe({
+        next: (res) => {
+          //this.success = 'Login successful';
+          //this.error = '';
+          console.log('Logged in user:', res);
+        },
+        error: (err) => {
+          console.error('Login error', err);
+          //this.error = err.error?.error || 'Login failed';
+          //this.success = '';
+        }
+      });
   }
 }

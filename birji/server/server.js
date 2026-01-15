@@ -68,6 +68,8 @@ function authorizeAdmin(req, res, next) {
 app.post('/api/auth/register', async (req, res) => {
     const { username, password, text } = req.body;
 
+    console.log("attempted registration")
+
     if (!username || !password) {
         return res.status(400).json({ error: 'Username und Passwort erforderlich' });
     }
@@ -116,6 +118,8 @@ app.post('/api/auth/register', async (req, res) => {
 
 app.post('/api/auth/login', async (req, res) => {
     const { username, password } = req.body;
+
+    console.log("attempted login")
 
     if (!username || !password) {
         return res.status(400).json({ error: 'Username und Passwort erforderlich' });

@@ -20,7 +20,7 @@
       <option value="tournament">Tournament player</option>
     </select>
 
-    <!-- Name -->
+    <!-- Name
     <div class="row">
       <div class="col">
         <label class="lbl">First name</label>
@@ -30,11 +30,11 @@
         <label class="lbl">Last name</label>
         <input class="input" type="text" placeholder="Last name" />
       </div>
-    </div>
+    </div> -->
 
     <!-- Email -->
-    <label class="lbl">E-Mail</label>
-    <input class="input" type="email" placeholder="email" />
+    <label class="lbl">Username</label>
+    <input class="input" type="text" [(ngModel)]="username" placeholder="Username" />
 
     <!-- Passwort -->
     <label class="lbl">Password</label>
@@ -42,6 +42,7 @@
       <input
         class="input"
         [type]="showPswd ? 'text' : 'password'"
+        [(ngModel)]="password"
         placeholder="••••••••"
       />
       <button
@@ -60,6 +61,6 @@
       <span>I have read and accepted the <a routerLink="/agb">terms of service</a> and the <a routerLink="/impressum">imprint</a>.</span>
     </label>
 
-    <button class="primary" type="button">Create account</button>
+    <button class="primary" type="button" (click)="register()">Create account</button>
   </main>
 </div>
