@@ -34,9 +34,11 @@ export class LoginComponent {
           //this.success = 'Login successful';
           //this.error = '';
           console.log('Logged in user:', res);
+          window.alert('Login successful');
         },
         error: (err) => {
           console.error('Login error', err);
+          window.alert('Login failed!');
           //this.error = err.error?.error || 'Login failed';
           //this.success = '';
         }

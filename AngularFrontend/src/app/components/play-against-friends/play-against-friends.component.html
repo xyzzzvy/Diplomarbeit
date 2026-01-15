@@ -8,6 +8,11 @@
   <main class="friends">
     <h1 class="pixel-title">Play against Friends</h1>
 
+    <!-- Show current turn -->
+    <p class="turn-indicator">
+      Turn: <span [class.white]="currentTurn === 'white'" [class.black]="currentTurn === 'black'">{{ currentTurn | titlecase }}</span>
+    </p>
+
     <div class="board pixel-box">
       <div class="row" *ngFor="let row of board; let r = index">
         <div

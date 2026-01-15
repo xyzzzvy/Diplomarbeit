@@ -34,9 +34,11 @@ export class RegistrationComponent {
         next: (res) => {
           //this.success = 'Registration successful';
           console.log('Registered user:', res);
+          window.alert('Registration successful');
         },
         error: (err) => {
           console.error('Register error', err);
+          window.alert('Registration failed!');
           //this.error = err.error?.error || 'Registration failed';
         }
       });
