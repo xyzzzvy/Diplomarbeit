@@ -25,7 +25,6 @@
   --btn-bg: var(--text);
   --btn-text: #2b2b2b;          /* dunkler Text auf hellem Button */
   --btn-border: var(--border);
-
   --input-bg: #111;
   --input-text: #f5daa7;
   --input-placeholder: rgba(245, 218, 167, 0.65);
@@ -41,7 +40,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: 20px;      /* größere Pixel-Schrift */
   letter-spacing: 0.5px; /* wirkt sauberer für Pixel-Schrift */
   line-height: 1.4;      /* bessere Lesbarkeit */
   background:
@@ -51,16 +50,32 @@ html, body {
 
 *, button, input, select, textarea {
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: inherit;
   box-sizing: border-box;
 }
 
 body { color: var(--text); }
 
-
 body.accessible-mode {
   background: var(--bg);
   color: var(--text);
+}
+
+html, body {
+  min-height: 100%;
+  background: var(--bg) !important;
+}
+
+/* falls ein Wrapper weniger Höhe hat */
+app-root {
+  display: block;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* Optional: verhindert "Scroll-Glow/Überscroll-Farbe" am Rand */
+body {
+  overscroll-behavior: none;
 }
 
 /* Barrierefrei: normale, gut lesbare Schrift, größer */
@@ -70,7 +85,7 @@ body.accessible-mode input,
 body.accessible-mode select,
 body.accessible-mode textarea {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 1.8;
   color: var(--text); /* gleiche Farbe wie vorher */
   box-sizing: border-box;
@@ -86,7 +101,7 @@ body.accessible-mode .pixel-btn-dark {
 
 body.accessible-mode .pixel-btn,
 body.accessible-mode .pixel-btn-dark {
-  font-size: 22px !important;          /* größerer Text */
+  font-size: 25px !important;          /* größerer Text */
   padding: 18px 26px !important;        /* größerer Klickbereich */
   border-width: 3px !important;
   box-shadow: none !important;          /* ruhiger, barrierefrei */
@@ -131,6 +146,57 @@ body.accessible-mode ol {
 body.accessible-mode a {
   text-decoration: underline;
   font-weight: 600;
+}
+
+body.accessible-mode .pixel-input,
+body.accessible-mode .input {
+  margin-top: 6px;
+}
+
+body.accessible-mode .pixel-check,
+body.accessible-mode .check {
+  font-size: 18px !important;
+  line-height: 1.8;
+}
+
+body.accessible-mode .piece {
+  font-size: 56px !important;
+  line-height: 1 !important;
+}
+
+body.accessible-mode label,
+body.accessible-mode .lbl,
+body.accessible-mode .pixel-check,
+body.accessible-mode .pixel-check span,
+body.accessible-mode .check,
+body.accessible-mode .check span {
+  font-size: 20px !important;
+  line-height: 1.7 !important;
+}
+
+body.accessible-mode .pixel-input,
+body.accessible-mode .input,
+body.accessible-mode input,
+body.accessible-mode select,
+body.accessible-mode textarea {
+  font-size: 22px !important;
+  padding: 16px 18px !important;
+}
+
+body.accessible-mode .pixel-btn,
+body.accessible-mode .pixel-btn-dark,
+body.accessible-mode button {
+  background: #f5daa7 !important;   /* hell (wie dein Design) */
+  color: #2b2b2b !important;        /* dunkle Schrift */
+  border: 3px solid #2b2b2b !important;
+  box-shadow: none !important;
+}
+
+/* Hover bleibt gut sichtbar */
+body.accessible-mode .pixel-btn:hover,
+body.accessible-mode .pixel-btn-dark:hover,
+body.accessible-mode button:hover {
+  background: #e8cfa0 !important;
 }
 
 /* Globaler, gut sichtbarer Fokus für Tastatur-Nutzer */
@@ -209,12 +275,36 @@ textarea:focus {
   border: 2px solid var(--btn-border);
   padding: 12px 20px;
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: 18px;
   text-transform: uppercase;
   box-shadow: 4px 4px 0 var(--shadow);
   cursor: pointer;
   transition: transform 0.15s ease;
 }
+
+.pixel-btn,
+.pixel-btn-dark,
+.menu-btn,
+.start-btn,
+.primary,
+.login-btn,
+.create-btn {
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border: 2px solid var(--btn-border) !important;
+  box-shadow: 4px 4px 0 var(--shadow) !important;
+}
+
+.pixel-btn:hover,
+.pixel-btn-dark:hover,
+.menu-btn:hover,
+.start-btn:hover,
+.primary:hover,
+.login-btn:hover,
+.create-btn:hover {
+  filter: brightness(0.95);
+}
+
 .pixel-btn:hover { transform: scale(1.05); }
 .pixel-btn:active {
   transform: translateY(2px);
@@ -228,11 +318,13 @@ textarea:focus {
   color: var(--text);              /* da ist hell okay */
   border: 2px solid var(--border);
   box-shadow: 4px 4px 0 var(--shadow);
+  font-size: 18px;
 }
 
 .pixel-btn-dark:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
+  font-size: 18px;
 }
 
 /* Eingabefelder */
@@ -246,7 +338,7 @@ textarea:focus {
   border-radius: 6px;
   outline: none;
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .pixel-input::placeholder,
@@ -364,13 +456,19 @@ body.accessible-mode :focus-visible {
    Theme Variants
    ============================== */
 
-/* NORMAL – dein jetziges Design */
+:root{
+  --btn-bg: var(--text);
+  --btn-text: #2b2b2b;
+  --btn-border: var(--border);
+}
+
+/* NORMAL MODE */
 body.theme-normal {
   /* nichts nötig – :root ist Standard */
 }
 
 /* LIGHT MODE */
-body.theme-light {
+body.theme-light{
   --bg: #ffffff;
   --bg-light: #f4f4f4;
 
@@ -380,16 +478,14 @@ body.theme-light {
   --border: #999999;
   --shadow: #b0b0b0;
 
+  /* Buttons im Light Mode: weiß + schwarz */
   --btn-bg: #ffffff;
   --btn-text: #111111;
   --btn-border: #111111;
 
   --input-bg: #ffffff;
   --input-text: #111111;
-  --input-placeholder: rgba(0,0,0,0.55);
-
-  --accent-dark: #ffffff;
-  --accent-hover: #f0f0f0;
+  --input-placeholder: rgba(17,17,17,.6);
 }
 
 body.theme-light button,
@@ -422,13 +518,75 @@ body.theme-light .create-btn:hover {
 }
 
 /* DARK MODE */
-body.theme-dark {
+body.theme-dark{
   --bg: #0a0a0a;
   --bg-light: #121212;
+
   --text: #f2f2f2;
   --text-secondary: #cccccc;
+
   --border: #444444;
   --shadow: #000000;
-  --accent-dark: #1a1a1a;
-  --accent-hover: #2a2a2a;
+
+  /* Buttons im Dark Mode: dunkel + weiß */
+  --btn-bg: #1a1a1a;
+  --btn-text: #f2f2f2;
+  --btn-border: #666666;
+
+  --input-bg: #0f0f0f;
+  --input-text: #f2f2f2;
+  --input-placeholder: rgba(242,242,242,.6);
+}
+
+/* Alle Buttons in jeder Kombination (normal + accessible) folgen den Theme-Variablen */
+body.theme-normal .pixel-btn,
+body.theme-normal .pixel-btn-dark,
+body.theme-normal .menu-btn,
+body.theme-normal .start-btn,
+body.theme-normal .primary,
+body.theme-normal .login-btn,
+body.theme-normal .create-btn,
+
+body.theme-light .pixel-btn,
+body.theme-light .pixel-btn-dark,
+body.theme-light .menu-btn,
+body.theme-light .start-btn,
+body.theme-light .primary,
+body.theme-light .login-btn,
+body.theme-light .create-btn,
+
+body.theme-dark .pixel-btn,
+body.theme-dark .pixel-btn-dark,
+body.theme-dark .menu-btn,
+body.theme-dark .start-btn,
+body.theme-dark .primary,
+body.theme-dark .login-btn,
+body.theme-dark .create-btn,
+
+body.accessible-mode.theme-normal .pixel-btn,
+body.accessible-mode.theme-normal .pixel-btn-dark,
+body.accessible-mode.theme-normal .menu-btn,
+body.accessible-mode.theme-normal .start-btn,
+body.accessible-mode.theme-normal .primary,
+body.accessible-mode.theme-normal .login-btn,
+body.accessible-mode.theme-normal .create-btn,
+
+body.accessible-mode.theme-light .pixel-btn,
+body.accessible-mode.theme-light .pixel-btn-dark,
+body.accessible-mode.theme-light .menu-btn,
+body.accessible-mode.theme-light .start-btn,
+body.accessible-mode.theme-light .primary,
+body.accessible-mode.theme-light .login-btn,
+body.accessible-mode.theme-light .create-btn,
+
+body.accessible-mode.theme-dark .pixel-btn,
+body.accessible-mode.theme-dark .pixel-btn-dark,
+body.accessible-mode.theme-dark .menu-btn,
+body.accessible-mode.theme-dark .start-btn,
+body.accessible-mode.theme-dark .primary,
+body.accessible-mode.theme-dark .login-btn,
+body.accessible-mode.theme-dark .create-btn {
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border-color: var(--btn-border) !important;
 }

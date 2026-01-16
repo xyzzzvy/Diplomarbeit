@@ -23,15 +23,15 @@
   text-decoration: none;
 }
 
-.logo { font-size: 14px; }
+.logo { font-size: 18px; }
 
 .pawn {
-  font-size: 16px;
+  font-size: 18px;
   text-shadow: 0 0 8px var(--text);
 }
 
 .login-btn {
-  font-size: 12px;
+  font-size: 14px;
   padding: 8px 12px;
   color: #e5e7eb;
   background: var(--accent-dark);
@@ -61,17 +61,17 @@
 }
 .card h1 {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   margin: 6px 0 18px;
 }
 
 /* Eingabefelder */
-.lbl { font-size: 11px; margin-bottom: 6px; }
+.lbl { font-size: 14px; margin-bottom: 6px; }
 
 .input {
   width: 100%;
   padding: 10px 12px;
-  background: #111;
+  background: var(--bg);
   color: #e5e7eb;
   border: 2px solid var(--border);
   border-radius: 6px;
@@ -94,7 +94,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.6;
 }
