@@ -26,8 +26,8 @@
   color: var(--text);
   text-decoration: none;
 }
-.logo { font-size: 14px; }
-.pawn { font-size: 16px; text-shadow: 0 0 8px var(--text); }
+.logo { font-size: 20px; }
+.pawn { font-size: 25px; text-shadow: 0 0 8px var(--text); }
 
 /* Hauptinhalt */
 .content {
@@ -40,7 +40,7 @@
 /* Neue, besser lesbare Hauptüberschrift */
 .content h1 {
   text-align: center;
-  font-size: 22px;              /* größer */
+  font-size: 30px;              /* größer */
   margin-bottom: 20px;
   color: var(--text);
   text-shadow: 0 0 12px var(--text);
@@ -51,7 +51,7 @@
 
 /* Abschnittsüberschriften */
 .content h2 {
-  font-size: 14px;              /* leicht vergrößert */
+  font-size: 25px;              /* leicht vergrößert */
   margin-top: 24px;
   color: var(--text-secondary);
   text-shadow: 0 0 6px rgba(255,255,255,0.15);
@@ -59,7 +59,7 @@
 
 /* Textabsätze */
 .content p {
-  font-size: 11px;
+  font-size: 20px;
   margin-top: 6px;
   color: var(--text);
 }

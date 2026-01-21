@@ -40,7 +40,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-pixel);
-  font-size: 20px;      /* größere Pixel-Schrift */
+  font-size: 25px;      /* größere Pixel-Schrift */
   letter-spacing: 0.5px; /* wirkt sauberer für Pixel-Schrift */
   line-height: 1.4;      /* bessere Lesbarkeit */
   background:
@@ -268,6 +268,16 @@ textarea:focus {
   color: var(--text);
 }
 
+.sidenav {
+  width: 280px;
+  background: #111;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-right: 2px solid var(--border);
+}
+
 /* Standard-Button */
 .pixel-btn {
   background: var(--btn-bg);
@@ -275,7 +285,7 @@ textarea:focus {
   border: 2px solid var(--btn-border);
   padding: 12px 20px;
   font-family: var(--font-pixel);
-  font-size: 18px;
+  font-size: 25px;
   text-transform: uppercase;
   box-shadow: 4px 4px 0 var(--shadow);
   cursor: pointer;
@@ -293,6 +303,7 @@ textarea:focus {
   color: var(--btn-text) !important;
   border: 2px solid var(--btn-border) !important;
   box-shadow: 4px 4px 0 var(--shadow) !important;
+  font-size: 20px !important;
 }
 
 .pixel-btn:hover,
@@ -318,13 +329,13 @@ textarea:focus {
   color: var(--text);              /* da ist hell okay */
   border: 2px solid var(--border);
   box-shadow: 4px 4px 0 var(--shadow);
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .pixel-btn-dark:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  font-size: 18px;
+  font-size: 25px;
 }
 
 /* Eingabefelder */
@@ -502,6 +513,7 @@ body.theme-light a.create-btn {
   color: #111111 !important;
   border: 2px solid #111111 !important;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.25) !important;
+  font-size: 25px !important;
 }
 
 /* Hover: minimal dunkler, bleibt aber lesbar */
