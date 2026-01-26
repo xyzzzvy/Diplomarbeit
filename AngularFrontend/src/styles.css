@@ -4,15 +4,15 @@
 
 /* Font – Retro Pixel Look */
 @font-face {
-  font-family: 'Workbench';
-  src: url('assets/Workbench-Variable.ttf') format('truetype');
+  font-family: 'Jersey10-Regular';
+  src: url('assets/Jersey10-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 /* Farb-Variablen */
 :root {
-  --font-pixel: 'Workbench', monospace;
+  --font-pixel: 'Jersey10-Regular', monospace;
   --bg: #662222;
   --bg-light: #662222;
   --text: #f5daa7;
@@ -40,12 +40,16 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-pixel);
-  font-size: 25px;      /* größere Pixel-Schrift */
+  font-size: 30px;      /* größere Pixel-Schrift */
   letter-spacing: 0.5px; /* wirkt sauberer für Pixel-Schrift */
   line-height: 1.4;      /* bessere Lesbarkeit */
   background:
     radial-gradient(transparent 60%, rgba(255,255,255,0.02)) 0 0/48px 48px,
     var(--bg);
+}
+
+h1 {
+  font-size: 40px;
 }
 
 *, button, input, select, textarea {
@@ -285,7 +289,7 @@ textarea:focus {
   border: 2px solid var(--btn-border);
   padding: 12px 20px;
   font-family: var(--font-pixel);
-  font-size: 25px;
+  font-size: 30px;
   text-transform: uppercase;
   box-shadow: 4px 4px 0 var(--shadow);
   cursor: pointer;
@@ -303,7 +307,7 @@ textarea:focus {
   color: var(--btn-text) !important;
   border: 2px solid var(--btn-border) !important;
   box-shadow: 4px 4px 0 var(--shadow) !important;
-  font-size: 20px !important;
+  font-size: 30px !important;
 }
 
 .pixel-btn:hover,
@@ -513,7 +517,7 @@ body.theme-light a.create-btn {
   color: #111111 !important;
   border: 2px solid #111111 !important;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.25) !important;
-  font-size: 25px !important;
+  font-size: 30px !important;
 }
 
 /* Hover: minimal dunkler, bleibt aber lesbar */

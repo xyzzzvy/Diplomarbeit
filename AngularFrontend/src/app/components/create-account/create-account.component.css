@@ -22,16 +22,16 @@
   color: var(--text);
 }
 
-.logo { font-size: 14px; }
+.logo { font-size: 35px; }
 
 .pawn {
-  font-size: 16px;
+  font-size: 40px;
   text-shadow: 0 0 8px var(--text);
 }
 
 /* Einloggen-Button (Top rechts) */
 .login-btn {
-  font-size: 12px;
+  font-size: 30px;
   padding: 8px 12px;
   color: #e5e7eb;
   background: var(--accent-dark);
@@ -58,14 +58,14 @@
 }
 
 .pawn-big {
-  font-size: 80px;
+  font-size: 100px;
   text-shadow: 0 0 10px var(--text);
   margin-bottom: 10px;
 }
 
 h1 {
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 35px;
   line-height: 1.6;
 }
 
@@ -74,7 +74,7 @@ h1 {
   background: var(--text);
   color: #000;
   padding: 12px 24px;
-  font-size: 14px;
+  font-size: 35px;
   border: none;
   box-shadow: 4px 4px 0 var(--shadow);
   cursor: pointer;

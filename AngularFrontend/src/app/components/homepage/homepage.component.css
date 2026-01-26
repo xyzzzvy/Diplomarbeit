@@ -6,13 +6,13 @@
 }
 
 .logo {
-  font-size: 25px;
+  font-size: 30px;
   margin-bottom: 20px;
 }
 
 /* Menü-Buttons */
 .menu-btn {
-  font-size: 20px;
+  font-size: 25px;
   padding: 8px;
   text-align: left;
   border: 2px solid var(--border);
@@ -37,7 +37,7 @@
 
 /* Schachfigur und Text */
 .pawn {
-  font-size: 80px;
+  font-size: 100px;
   margin-bottom: 20px;
   text-shadow: 0 0 10px var(--text);
 }
@@ -45,7 +45,7 @@
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1.6;
 }
 
@@ -54,7 +54,7 @@ h1 {
   background: var(--text);
   color: #000;
   padding: 12px 24px;
-  font-size: 25px;
+  font-size: 30px;
   border: none;
   box-shadow: 4px 4px 0 var(--shadow);
   cursor: pointer;

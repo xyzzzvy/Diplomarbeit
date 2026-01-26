@@ -19,7 +19,7 @@
 
 .side-title {
   margin: 0 0 6px;
-  font-size: 16px;
+  font-size: 30px;
   text-shadow: 0 0 10px var(--text);
 }
 
@@ -32,12 +32,12 @@
 
 .side-label {
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 25px;
 }
 
 .side-hint {
   margin: 10px 0 0;
-  font-size: 11px;
+  font-size: 30px;
   line-height: 1.6;
   color: var(--text-secondary);
 }
@@ -55,7 +55,7 @@
   text-align: center;
 }
 .upload-hint {
-  font-size: 11px;
+  font-size: 25px;
   color: var(--text-secondary);
 }
 
@@ -91,11 +91,11 @@
   gap: 10px;
 }
 .pawn {
-  font-size: 18px;
+  font-size: 35px;
   text-shadow: 0 0 8px var(--text);
 }
 .title {
-  font-size: 14px;
+  font-size: 30px;
 }
 
 /* Chat box */
@@ -126,13 +126,13 @@
 }
 
 .bubble .bubble-meta {
-  font-size: 10px;
+  font-size: 25px;
   opacity: 0.85;
   margin-bottom: 6px;
 }
 
 .bubble .bubble-text {
-  font-size: 12px;
+  font-size: 25px;
   line-height: 1.7;
 }
 
@@ -194,7 +194,7 @@
   cursor: pointer;
   box-shadow: 3px 3px 0 var(--shadow);
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 35px;
 }
 .send-btn:hover {
   transform: scale(1.03);

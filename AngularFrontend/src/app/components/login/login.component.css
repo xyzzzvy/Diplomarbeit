@@ -13,8 +13,8 @@
   background: #0a0a0a;
 }
 .brand{ display:inline-flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; }
-.logo{ font-size:14px; }
-.pawn{ font-size:16px; text-shadow:0 0 8px var(--text); }
+.logo{ font-size:40px; }
+.pawn{ font-size:40px; text-shadow:0 0 8px var(--text); }
 
 /* Card mittig */
 .card{
@@ -29,7 +29,7 @@
   text-align: left;
 }
 .card h1{
-  text-align:center; font-size:16px; margin: 0 0 6px;
+  text-align:center; font-size:35px; margin: 0 0 6px;
 }
 
 /* Felder mit Icons */
