@@ -23,17 +23,16 @@
           (drop)="drop(r, c, $event)"
         >
           <!-- Figur -->
-          <span
+          <img
             *ngIf="cell"
-            class="piece"
-            [class.white]="isWhite(cell)"
-            [class.black]="!isWhite(cell)"
+            class="piece-img"
+            [src]="getPieceImage(cell)"
             draggable="true"
             (dragstart)="dragStart(r, c, $event)"
             (click)="onPieceClick(r, c)"
-          >
-        {{ cell }}
-      </span>
+            alt=""
+          />
+
 
           <!-- Pfeil / Highlight, nur wenn kein Piece dort ist -->
           <span

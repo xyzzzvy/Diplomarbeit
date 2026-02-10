@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayAgainstFriendsComponent implements OnInit {
 
-
   board: string[][] = [];
   arrows: { symbol: string; color: 'white' | 'black' | '' }[][] = [];
   currentTurn: 'white' | 'black' = 'white';
@@ -70,6 +69,28 @@ export class PlayAgainstFriendsComponent implements OnInit {
 
   public isWhite(ch: string): boolean {
     return '♙♖♘♗♕♔'.includes(ch);
+  }
+
+  getPieceImage(piece: string): string {
+    const isWhite = this.isWhite(piece);
+    const prefix = isWhite ? 'w_' : 'b_';
+
+    const map: Record<string, string> = {
+      '♙': 'pawn',
+      '♟': 'pawn',
+      '♖': 'rook',
+      '♜': 'rook',
+      '♘': 'knight',
+      '♞': 'knight',
+      '♗': 'bishop',
+      '♝': 'bishop',
+      '♕': 'queen',
+      '♛': 'queen',
+      '♔': 'king',
+      '♚': 'king',
+    };
+
+    return `assets/pieces/${prefix}${map[piece]}.png`;
   }
 
   private isOpponentPiece(r: number, c: number, piece: string): boolean {

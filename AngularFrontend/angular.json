@@ -18,7 +18,11 @@
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [{ "glob": "**/*", "input": "public" }],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              { "glob": "**/*", "input": "public" }
+            ],
             "styles": ["src/styles.css"],
             "scripts": []
           },
@@ -54,7 +58,11 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [{ "glob": "**/*", "input": "public" }],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              { "glob": "**/*", "input": "public" }
+            ],
             "styles": ["src/styles.css"],
             "scripts": []
           }
