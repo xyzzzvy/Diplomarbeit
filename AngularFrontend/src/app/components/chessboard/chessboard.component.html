@@ -1,0 +1,42 @@
+<main class="chessboard-container">
+  <!-- Show current turn -->
+  <p class="turn-indicator">
+    Turn: <span [class.white]="currentTurn === 'white'" [class.black]="currentTurn === 'black'">{{ currentTurn | titlecase }}</span>
+  </p>
+
+  <div class="board pixel-box">
+    <div class="row" *ngFor="let row of board; let r = index">
+      <div
+        class="square"
+        *ngFor="let cell of row; let c = index"
+        [class.dark]="(r + c) % 2 === 1"
+        (dragover)="allowDrop($event)"
+        (drop)="drop(r, c, $event)"
+      >
+        <!-- Figur -->
+        <img
+          *ngIf="cell"
+          class="piece-img"
+          [src]="getPieceImage(cell)"
+          draggable="true"
+          (dragstart)="dragStart(r, c, $event)"
+          (click)="onPieceClick(r, c)"
+          alt=""
+        />
+
+
+        <!-- Pfeil / Highlight, nur wenn kein Piece dort ist -->
+        <span
+          *ngIf="!cell && arrows[r][c].symbol"
+          class="arrow"
+          [class.arrow-white]="arrows[r][c].color === 'white'"
+          [class.arrow-black]="arrows[r][c].color === 'black'"
+        >
+              {{ arrows[r][c].symbol }}
+            </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="pixel-btn" (click)="resetBoard()">Reset board</button>
+</main>

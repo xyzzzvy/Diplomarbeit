@@ -89,7 +89,7 @@ body.accessible-mode input,
 body.accessible-mode select,
 body.accessible-mode textarea {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1.8;
   color: var(--text); /* gleiche Farbe wie vorher */
   box-sizing: border-box;
@@ -105,7 +105,7 @@ body.accessible-mode .pixel-btn-dark {
 
 body.accessible-mode .pixel-btn,
 body.accessible-mode .pixel-btn-dark {
-  font-size: 25px !important;          /* größerer Text */
+  font-size: 20px !important;          /* größerer Text */
   padding: 18px 26px !important;        /* größerer Klickbereich */
   border-width: 3px !important;
   box-shadow: none !important;          /* ruhiger, barrierefrei */
@@ -113,7 +113,7 @@ body.accessible-mode .pixel-btn-dark {
 
 body.accessible-mode .pixel-input,
 body.accessible-mode .input {
-  font-size: 20px !important;
+  font-size: 18px !important;
   padding: 14px 16px !important;        /* größere Textbox */
   border-width: 3px !important;
 }
@@ -121,7 +121,7 @@ body.accessible-mode .input {
 body.accessible-mode .pixel-title,
 body.accessible-mode h1,
 body.accessible-mode h2 {
-  font-size: 28px !important;
+  font-size: 25px !important;
   text-shadow: none !important;         /* barrierefrei besser */
 }
 
@@ -137,14 +137,14 @@ body.accessible-mode a,
 body.accessible-mode div,
 body.accessible-mode section,
 body.accessible-mode article {
-  font-size: 20px !important;
+  font-size: 18px !important;
   line-height: 1.8 !important;
 }
 
 body.accessible-mode ul,
 body.accessible-mode ol {
   padding-left: 28px !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
 }
 
 body.accessible-mode a {
@@ -159,12 +159,12 @@ body.accessible-mode .input {
 
 body.accessible-mode .pixel-check,
 body.accessible-mode .check {
-  font-size: 18px !important;
+  font-size: 15px !important;
   line-height: 1.8;
 }
 
 body.accessible-mode .piece {
-  font-size: 56px !important;
+  font-size: 70px !important;
   line-height: 1 !important;
 }
 
@@ -174,7 +174,7 @@ body.accessible-mode .pixel-check,
 body.accessible-mode .pixel-check span,
 body.accessible-mode .check,
 body.accessible-mode .check span {
-  font-size: 20px !important;
+  font-size: 18px !important;
   line-height: 1.7 !important;
 }
 
@@ -183,7 +183,7 @@ body.accessible-mode .input,
 body.accessible-mode input,
 body.accessible-mode select,
 body.accessible-mode textarea {
-  font-size: 22px !important;
+  font-size: 20px !important;
   padding: 16px 18px !important;
 }
 

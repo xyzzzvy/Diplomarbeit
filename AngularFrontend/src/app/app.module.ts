@@ -17,8 +17,7 @@ import { AgbComponent } from './components/agb/agb.component';
 import { ImpressumComponent } from './components/impressum/impressum.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgottPasswordComponent } from './components/login/forgott-password/forgott-password.component';
-
-
+import { ChessboardComponent } from './components/chessboard/chessboard.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +34,7 @@ import { ForgottPasswordComponent } from './components/login/forgott-password/fo
     ImpressumComponent,
     LoginComponent,
     ForgottPasswordComponent,
+    ChessboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,4 +45,5 @@ import { ForgottPasswordComponent } from './components/login/forgott-password/fo
   bootstrap: [AppComponent],
   providers: [provideHttpClient()]
 })
+
 export class AppModule {}

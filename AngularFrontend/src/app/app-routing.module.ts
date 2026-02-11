@@ -12,6 +12,7 @@ import {AgbComponent} from './components/agb/agb.component';
 import {ImpressumComponent} from './components/impressum/impressum.component';
 import {LoginComponent} from './components/login/login.component';
 import {ForgottPasswordComponent} from './components/login/forgott-password/forgott-password.component';
+import {ChessboardComponent} from './components/chessboard/chessboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'impressum', component: ImpressumComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgottPassword', component: ForgottPasswordComponent },
+  { path: 'chessboard', component: ChessboardComponent },
 ];
 
 @NgModule({
