@@ -2,6 +2,7 @@ import { Chess } from 'chess.js';
 import crypto from 'crypto';
 
 let games = new Map();
+let matchmakingQueue = [];
 
 function finishGame(gameId){
     //TODO: save to db
@@ -9,6 +10,12 @@ function finishGame(gameId){
 }
 
 export function registerChessRoutes(app) {
+
+    app.post('/api/chess/queue-up/:user', (req, res) => {
+        const user = req.params.user;
+        matchmakingQueue.push(user);
+        //TODO: connect to websocket to actually create queue and match once >2 users
+    })
 
     app.post('/api/chess/create-game', (req, res) => {
         let { white, black } = req.body;
