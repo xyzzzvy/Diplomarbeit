@@ -107,7 +107,7 @@
 }
 
 .logo-img {
-  width: 120px;
+  width: 170px;
   margin: 0 auto 10px;
   display: block;
   image-rendering: pixelated;
@@ -124,7 +124,7 @@
 }
 
 body.accessible-mode .pixel-title {
-  font-size: 36px;
+  font-size: 40px;
 }
 
 /* =========================================

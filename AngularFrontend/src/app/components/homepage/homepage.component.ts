@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AccessibilityService } from '../../accessability.service';
+import { AccessibilityService } from '../../services/accessibility.service';
 import {ThemeService} from '../../services/theme.service';
 
 @Component({

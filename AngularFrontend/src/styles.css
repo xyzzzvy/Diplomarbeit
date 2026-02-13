@@ -137,14 +137,14 @@ body.accessible-mode a,
 body.accessible-mode div,
 body.accessible-mode section,
 body.accessible-mode article {
-  font-size: 18px !important;
+  font-size: 20px !important;
   line-height: 1.8 !important;
 }
 
 body.accessible-mode ul,
 body.accessible-mode ol {
   padding-left: 28px !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
 }
 
 body.accessible-mode a {
@@ -217,7 +217,6 @@ body.accessible-mode .center-piece {
   text-shadow: none !important;  /* barrierefrei ruhiger */
 }
 
-
 /* Falls Browser :focus-visible nicht unterstützt:
    normale :focus-Umsetzung nur für typische interaktive Elemente */
 button:focus,
@@ -273,7 +272,7 @@ textarea:focus {
 }
 
 .sidenav {
-  width: 280px;
+  width: 350px;
   background: #111;
   padding: 20px;
   display: flex;
@@ -325,7 +324,6 @@ textarea:focus {
   transform: translateY(2px);
   box-shadow: 2px 2px 0 var(--shadow);
 }
-
 
 /* Dunkler Menü-Button (z. B. Login) */
 .pixel-btn-dark {

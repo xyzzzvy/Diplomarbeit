@@ -67,7 +67,7 @@ h1 {
 
 /* Logo-Bild oben in der Sidebar */
 .logo-img {
-  width: 120px;
+  width: 170px;
   margin: 0 auto 16px;
   display: block;
   image-rendering: pixelated;  /* passt zum Pixel-Style */
@@ -142,4 +142,15 @@ h1 {
 .accessibility-toggle[aria-pressed="true"] {
   background: #f5daa7;
   color: #662222;
+}
+
+body.accessible-mode .sidenav {
+  width: 800px;              /* im Accessibility Mode nochmal breiter */
+  flex-basis: 340px;
+}
+
+/* Schrift in der Sidenav ein paar px kleiner als global (damit alles passt) */
+body.accessible-mode .sidenav .menu-btn {
+  font-size: 18px !important;      /* statt z.B. 22/20 */
+  padding: 14px 16px !important;   /* etwas kleiner */
 }

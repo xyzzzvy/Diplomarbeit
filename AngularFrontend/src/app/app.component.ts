@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { AccessibilityService } from './accessability.service';
+import { AccessibilityService } from './services/accessibility.service';
 import { ThemeService, ThemeMode } from './services/theme.service';
 
 @Component({
