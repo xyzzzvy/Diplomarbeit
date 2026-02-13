@@ -9,28 +9,25 @@ function finishGame(gameId){
     games.delete(gameId);
 }
 
+function createGame(white, black){
+    const game = {
+        id: crypto.randomUUID(),
+        white: white,
+        black: black,
+        chess: new Chess(),
+        createdAt: Date.now(),
+    }
+
+    games.set(game.id, game);
+    return games[game.id];
+}
+
 export function registerChessRoutes(app) {
 
     app.post('/api/chess/queue-up/:user', (req, res) => {
         const user = req.params.user;
         matchmakingQueue.push(user);
         //TODO: connect to websocket to actually create queue and match once >2 users
-    })
-
-    app.post('/api/chess/create-game', (req, res) => {
-        let { white, black } = req.body;
-
-        const game = {
-            id: crypto.randomUUID(),
-            white: white,
-            black: black,
-            chess: new Chess(),
-            createdAt: Date.now(),
-        }
-
-        games.set(game.id, game);
-
-        return res.status(200).json({game: game});
     })
 
     app.post('/api/chess/move', (req, res) => {
@@ -58,6 +55,6 @@ export function registerChessRoutes(app) {
             finishGame(gameId);
         }
 
-        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), status: gameOver });
+        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), status: gameOver,  moves: chess.moves({ verbose: true })});
     });
 }
