@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="board">
+  <div class="row" *ngFor="let row of board; let r = index">
+    <div class="square"
+         *ngFor="let cell of row; let c = index"
+         [class.dark]="(r+c) % 2 === 1"
+         [class.highlight]="highlightClass(r, c)"
+         draggable="true"
+         (dragstart)="dragStart(r, c, $event)"
+         (dragover)="allowDrop($event)"
+         (drop)="drop(r, c, $event)"
+         (click)="onSquareClick(r, c)">
+      <img *ngIf="cell" [src]="getPieceImage(cell)" alt="">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

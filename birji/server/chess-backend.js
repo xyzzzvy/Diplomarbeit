@@ -19,7 +19,7 @@ function createGame(white, black){
     }
 
     games.set(game.id, game);
-    return games[game.id];
+    return games.get(game.id);
 }
 
 export function registerChessRoutes(app) {
@@ -55,6 +55,20 @@ export function registerChessRoutes(app) {
             finishGame(gameId);
         }
 
-        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), status: gameOver,  moves: chess.moves({ verbose: true })});
+        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), turn: chess.turn(), status: gameOver,  moves: chess.moves({ verbose: true })});
     });
+
+    app.get('/api/chess/get-base-board', (req, res) => {
+        const chess = new Chess();
+        const game = createGame('white', 'black'); // Add a real game
+        res.json({
+            id: game.id,
+            fen: chess.fen(),
+            pgn: chess.pgn(),
+            turn: chess.turn(),
+            moves: chess.moves({ verbose: true }),
+            status: false
+        });
+    });
+
 }

@@ -166,7 +166,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 
-//registerChessRoutes(app)
+registerChessRoutes(app)
 
 // Server starten
 app.listen(port, '0.0.0.0', () => {

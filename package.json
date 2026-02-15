@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-chess-board": "^3.0.0"
+  }
+}

@@ -18,6 +18,7 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgottPasswordComponent } from './components/login/forgott-password/forgott-password.component';
 import { ChessboardComponent } from './components/chessboard/chessboard.component';
+import { NewChessboardComponent} from './components/new-chessboard/new-chessboard.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ChessboardComponent } from './components/chessboard/chessboard.componen
     LoginComponent,
     ForgottPasswordComponent,
     ChessboardComponent,
+    NewChessboardComponent
   ],
   imports: [
     BrowserModule,
