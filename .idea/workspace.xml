@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/ai-coach/ai-coach.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/ai-coach/ai-coach.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +89,8 @@
       <workItem from="1770981614509" duration="722000" />
       <workItem from="1771229542427" duration="3452000" />
       <workItem from="1771239774252" duration="1780000" />
-      <workItem from="1771246253128" duration="299000" />
+      <workItem from="1771246253128" duration="326000" />
+      <workItem from="1771246675902" duration="2184000" />
     </task>
     <servers />
   </component>
