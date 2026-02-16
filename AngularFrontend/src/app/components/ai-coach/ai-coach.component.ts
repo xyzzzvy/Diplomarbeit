@@ -37,7 +37,7 @@ export class AiCoachComponent {
         },
         error: err => {
           console.error(err);
-          aiMsg.text = 'Error contacting to Ollama.';
+          aiMsg.text = 'Error contacting Ollama.';
         }
       });
   }

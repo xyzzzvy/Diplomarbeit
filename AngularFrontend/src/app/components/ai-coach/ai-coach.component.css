@@ -123,6 +123,10 @@
   position: relative;
   box-shadow: 3px 3px 0 var(--shadow);
   background: rgba(0, 0, 0, 0.12);
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .bubble .bubble-meta {
@@ -138,9 +142,10 @@
 
 /* AI bubble (rechts oben wie im sketch) */
 .bubble.ai {
-  align-self: flex-end;
-  border-radius: 16px 16px 6px 16px;
+  align-self: flex-start;
+  border-radius: 16px;
 }
+/*
 .bubble.ai::after {
   content: "";
   position: absolute;
@@ -152,13 +157,14 @@
   border-right: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
   transform: rotate(45deg);
-}
+}*/
 
 /* USER bubble (links mittig wie im sketch) */
 .bubble.user {
-  align-self: flex-start;
-  border-radius: 16px 16px 16px 6px;
+  align-self: flex-end;
+  border-radius: 16px;
 }
+/*
 .bubble.user::after {
   content: "";
   position: absolute;
@@ -170,7 +176,7 @@
   border-left: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
   transform: rotate(-45deg);
-}
+}*/
 
 /* Composer bar bottom */
 .composer {
