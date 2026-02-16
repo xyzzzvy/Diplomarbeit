@@ -83,11 +83,12 @@ export class NewChessboardComponent implements OnInit {
   // Click on a square: if a piece is already selected and this square is a legal move, make the move
   onSquareClick(row: number, col: number) {
     const square = this.squareName(row, col);
-    console.log('Click on square:', square, 'Selected:', this.selectedSquare, 'Highlights:', this.highlightSquares);
+    //console.log('Click on square:', square, 'Selected:', this.selectedSquare, 'Highlights:', this.highlightSquares);
 
     if (this.selectedSquare && this.highlightSquares.includes(square)) {
-      console.log('Making move:', this.selectedSquare, '->', square);
+      //console.log('Making move:', this.selectedSquare, '->', square);
       this.makeMove(this.selectedSquare, square);
+      this.clearSelection();
       return;
     }
 

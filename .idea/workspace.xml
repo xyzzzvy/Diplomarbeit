@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="" />
+    <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/services/chess.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/services/chess.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/birji/server/chess-backend.js" beforeDir="false" afterPath="$PROJECT_DIR$/birji/server/chess-backend.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +59,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\ahmad\\Desktop\\Chess AI Mate - Github Repo\\Diplomarbeit\\AngularFrontend\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Diplomarbeit ChessAIMate\\Github Repo\\AngularFrontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,6 +92,7 @@
       <workItem from="1770813781788" duration="2119000" />
       <workItem from="1770897801088" duration="4439000" />
       <workItem from="1770981614509" duration="722000" />
+      <workItem from="1771229542427" duration="3452000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@
          *ngFor="let cell of row; let c = index"
          [class.dark]="(r+c) % 2 === 1"
          [class.highlight]="highlightClass(r, c)"
-         draggable="true"
+         [attr.draggable]="cell ? true : null"
          (dragstart)="dragStart(r, c, $event)"
          (dragover)="allowDrop($event)"
          (drop)="drop(r, c, $event)"

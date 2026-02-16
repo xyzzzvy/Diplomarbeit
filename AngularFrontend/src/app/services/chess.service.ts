@@ -11,11 +11,11 @@ export class ChessService {
 
   private http = inject(HttpClient);
 
-  public move(gameId: string, from: string, to: string, promotion?: string): Observable<{ id: string, fen: string, pgn: string, turn: string, status: boolean, moves: any[] }> {
-    return this.http.post<{ id: string, fen: string, pgn: string, turn: string, status: boolean, moves: any[] }> (`${this.chessApiUrl}/move`, { gameId, from, to, promotion });
+  public move(gameId: string, from: string, to: string, promotion?: string): Observable<{ id: string, fen: string, pgn: string, turn: string, gameover: boolean, moves: any[] }> {
+    return this.http.post<{ id: string, fen: string, pgn: string, turn: string, gameover: boolean, moves: any[] }> (`${this.chessApiUrl}/move`, { gameId, from, to, promotion });
   }
 
-  public getBaseBoard(): Observable<{ id: string, fen: string, pgn: string, turn: string, status: boolean, moves: any[] }> {
-    return this.http.get<{ id: string, fen: string, pgn: string, turn: string, status: boolean, moves: any[] }>(`${this.chessApiUrl}/get-base-board`);
+  public getBaseBoard(): Observable<{ id: string, fen: string, pgn: string, turn: string, gameover: boolean, moves: any[] }> {
+    return this.http.get<{ id: string, fen: string, pgn: string, turn: string, gameover: boolean, moves: any[] }>(`${this.chessApiUrl}/get-base-board`);
   }
 }

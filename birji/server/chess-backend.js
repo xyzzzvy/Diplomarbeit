@@ -55,7 +55,7 @@ export function registerChessRoutes(app) {
             finishGame(gameId);
         }
 
-        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), turn: chess.turn(), status: gameOver,  moves: chess.moves({ verbose: true })});
+        return res.status(200).json({ id: gameId, fen: chess.fen(), pgn: chess.pgn(), turn: chess.turn(), gameover: gameOver,  moves: chess.moves({ verbose: true })});
     });
 
     app.get('/api/chess/get-base-board', (req, res) => {
