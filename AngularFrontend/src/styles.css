@@ -605,3 +605,49 @@ body.accessible-mode.theme-dark .create-btn {
   color: var(--btn-text) !important;
   border-color: var(--btn-border) !important;
 }
+
+/* =========================================
+   Accessibility Mode – Bots Panel Fix
+   ========================================= */
+
+body.accessible-mode .bots-panel {
+  border-width: 3px !important;
+  width: 480px !important;
+}
+
+body.accessible-mode .bot-card {
+  background: #f5daa7 !important;      /* hell klar */
+  border: 3px solid #2b2b2b !important;
+  box-shadow: none !important;
+}
+
+body.accessible-mode .bot-name {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+body.accessible-mode .bot-sub {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: #222222 !important;
+}
+
+body.accessible-mode .bot-status {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  padding: 8px 14px !important;
+  border: 3px solid #2b2b2b !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+body.accessible-mode .play-btn {
+  font-size: 28px !important;      /* deutlich größer */
+  padding: 18px 28px !important;   /* größerer Klickbereich */
+  font-weight: 700 !important;
+  background: #f5daa7 !important;
+  color: #111111 !important;
+  border: 3px solid #111111 !important;
+  box-shadow: none !important;
+}

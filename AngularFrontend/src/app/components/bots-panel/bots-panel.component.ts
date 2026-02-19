@@ -14,7 +14,7 @@ type BotCard = {
   styleUrl: './bots-panel.component.css'
 })
 export class BotsPanelComponent {
-  // Platzhalter – echte Bots kannst du später einfach aus einem Service/API laden
+  // Platzhalter
   bots: BotCard[] = [
     {
       name: 'Bot 1',
