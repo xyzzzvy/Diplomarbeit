@@ -13,6 +13,7 @@ import {ImpressumComponent} from './components/impressum/impressum.component';
 import {LoginComponent} from './components/login/login.component';
 import {ForgottPasswordComponent} from './components/login/forgott-password/forgott-password.component';
 import {ChessboardComponent} from './components/chessboard/chessboard.component';
+import {BotsPanelComponent} from './components/bots-panel/bots-panel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forgottPassword', component: ForgottPasswordComponent },
   { path: 'chessboard', component: ChessboardComponent },
+  { path: 'botsPanel', component: BotsPanelComponent },
 ];
 
 @NgModule({

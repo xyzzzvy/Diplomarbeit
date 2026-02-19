@@ -1,0 +1,23 @@
+<aside class="bots-panel pixel-box" aria-label="Bots list">
+  <h2 class="bots-title">Bots</h2>
+
+  <div class="bots-list">
+    <button class="bot-card" type="button" *ngFor="let bot of bots">
+      <img class="bot-avatar" [src]="bot.avatar" [alt]="bot.name + ' avatar'">
+
+      <div class="bot-meta">
+        <div class="bot-name">{{ bot.name }}</div>
+        <div class="bot-sub">{{ bot.level }}</div>
+      </div>
+
+      <span class="bot-status" [class.online]="bot.status === 'online'" [class.offline]="bot.status === 'offline'">
+        {{ bot.status }}
+      </span>
+    </button>
+  </div>
+
+  <button class="pixel-btn play-btn" type="button">
+    Play
+  </button>
+</aside>
+

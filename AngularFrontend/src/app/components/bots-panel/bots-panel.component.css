@@ -1,0 +1,99 @@
+.bots-panel {
+  width: 320px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bots-title {
+  margin: 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+.bots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bot-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  background: #f5daa7;
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.bot-card:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.bot-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: #0a0a0a;
+  object-fit: cover;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.bot-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.bot-name {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bot-sub {
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.bot-status {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  text-transform: uppercase;
+}
+
+.bot-status.online {
+  background: rgba(0, 255, 0, 0.08);
+}
+
+.bot-status.offline {
+  background: rgba(255, 0, 0, 0.08);
+}
+
+.bots-hint {
+  font-size: 16px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* Mobile: Panel unter das Brett */
+@media (max-width: 900px) {
+  .bots-panel {
+    width: min(420px, 92vw);
+  }
+}
