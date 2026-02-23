@@ -20,13 +20,12 @@
 }
 
 .friends {
-  flex: 1;                   /* nimmt restliche Breite */
+  flex: 1;
   display: flex;
-  justify-content: center;   /* horizontal mittig */
-  align-items: center;       /* vertikal mittig */
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  flex-direction: column;   /* WICHTIG */
+  align-items: center;      /* horizontal zentriert */
+  justify-content: center;  /* vertikal zentriert */
+  gap: 30px;
 }
 
 

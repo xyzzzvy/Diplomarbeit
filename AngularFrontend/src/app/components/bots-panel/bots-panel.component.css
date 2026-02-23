@@ -1,9 +1,13 @@
 .bots-panel {
-  width: 320px;
-  padding: 18px;
+  width: 300px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
+  min-height: 100vh;
+  flex-shrink: 0;
+  border-left: 3px solid var(--border);
+  overflow: auto;
 }
 
 .bots-title {
