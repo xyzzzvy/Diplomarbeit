@@ -17,9 +17,18 @@
 }
 
 .bots-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-y: auto;
+}
+
+/* Fester Footer */
+.bots-footer {
+  border-top: 3px solid var(--border);   /* Trennlinie */
+  padding: 20px;
+  background: #6a2020;
 }
 
 .bot-card {
