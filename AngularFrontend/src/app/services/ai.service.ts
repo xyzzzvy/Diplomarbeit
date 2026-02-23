@@ -27,10 +27,22 @@ export class AIService {
   private buildPrompt(question: string, fen?: string, pgn?: string): string {
     return `You are tasked with helping chess players by answering their questions using the given metadata. If there is no metadata then answer using well-known chess principles.
 
+
 question: ${question?.trim() || ''}
 
 metadata:
 - pgn: ${pgn?.trim() || ''}
 - fen: ${fen?.trim() || ''}`;
+  }
+
+  private buildPromptWithTemplate(question: string, fen?: string, pgn?: string): string {
+    let metadata = "";
+
+    if (fen) metadata += `FEN: ${fen}\n`;
+    if (pgn) metadata += `PGN: ${pgn}\n`;
+
+    return `User: ${question}
+${metadata ? metadata : ""}
+Coach:`;
   }
 }
