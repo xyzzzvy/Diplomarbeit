@@ -12,6 +12,7 @@ import {
     loginUser
 } from './db.js'; // Pfad ggf. anpassen
 import { registerChessRoutes } from './chess-backend.js';
+import { registerAIRoutes } from "./ai-backend.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -167,6 +168,7 @@ app.post('/api/auth/login', async (req, res) => {
 
 
 registerChessRoutes(app)
+registerAIRoutes(app)
 
 // Server starten
 app.listen(port, '0.0.0.0', () => {

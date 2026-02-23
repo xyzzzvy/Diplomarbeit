@@ -210,6 +210,10 @@
   box-shadow: 2px 2px 0 var(--shadow);
 }
 
+.pixel-btn-dark {
+  text-decoration: none;
+}
+
 /* Responsive */
 @media (max-width: 980px) {
   .coach-layout {
