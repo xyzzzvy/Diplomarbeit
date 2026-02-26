@@ -15,6 +15,7 @@ export class NewChessboardComponent implements OnInit {
   selectedSquare: string | null = null;
   gameId: string = 'test-game';           // example, can be dynamic
   currentTurn: 'w' | 'b' = 'w';          // track whose turn
+  promotionData: { from: string, to: string } | null = null;
 
   constructor(private chessService: ChessService) {}
 
@@ -118,8 +119,14 @@ export class NewChessboardComponent implements OnInit {
 
   // Make move via ChessService
   makeMove(from: string, to: string, promotion?: string) {
-    const isLegal = this.possibleMoves.some(m => m.from === from && m.to === to);
-    if (!isLegal) return;
+    const move = this.possibleMoves.find(m => m.from === from && m.to === to);
+    if (!move) return;
+
+    // If this move includes promotion flag from chess.js
+    if (move.promotion && !promotion) {
+      this.openPromotionDialog(from, to);
+      return;
+    }
 
     this.chessService.move(this.gameId, from, to, promotion || 'q')
       .subscribe(res => {
@@ -156,5 +163,21 @@ export class NewChessboardComponent implements OnInit {
       '♗':'bishop','♝':'bishop','♕':'queen','♛':'queen','♔':'king','♚':'king'
     };
     return `assets/pieces/${prefix}${map[piece]}.png`;
+  }
+
+  openPromotionDialog(from: string, to: string) {
+    this.promotionData = { from, to };
+  }
+
+  selectPromotion(piece: 'q' | 'r' | 'b' | 'n') {
+    if (!this.promotionData) return;
+
+    this.makeMove(
+      this.promotionData.from,
+      this.promotionData.to,
+      piece
+    );
+
+    this.promotionData = null;
   }
 }

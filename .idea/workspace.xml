@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/new-chessboard/new-chessboard.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +100,12 @@
       <workItem from="1771844910969" duration="543000" />
       <workItem from="1771851200229" duration="1260000" />
       <workItem from="1771853065329" duration="17000" />
-      <workItem from="1771853465533" duration="312000" />
+      <workItem from="1771853465533" duration="1082000" />
+      <workItem from="1771859390868" duration="139000" />
+      <workItem from="1772016363784" duration="147000" />
+      <workItem from="1772020654571" duration="1545000" />
+      <workItem from="1772023467807" duration="352000" />
+      <workItem from="1772109814671" duration="937000" />
     </task>
     <servers />
   </component>

@@ -20,6 +20,14 @@
     </div>
   </div>
 </div>
+<div class="promotion-modal" *ngIf="promotionData">
+  <div class="promotion-box">
+    <div (click)="selectPromotion('q')">♕</div>
+    <div (click)="selectPromotion('r')">♖</div>
+    <div (click)="selectPromotion('b')">♗</div>
+    <div (click)="selectPromotion('n')">♘</div>
+  </div>
+</div>
 
 </body>
 </html>
