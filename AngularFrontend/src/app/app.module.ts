@@ -20,6 +20,7 @@ import { ForgottPasswordComponent } from './components/login/forgott-password/fo
 import { ChessboardComponent } from './components/chessboard/chessboard.component';
 import { NewChessboardComponent} from './components/new-chessboard/new-chessboard.component';
 import { BotsPanelComponent } from './components/bots-panel/bots-panel.component';
+import { ProfileInfoComponent} from './components/profile-info/profile-info.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BotsPanelComponent } from './components/bots-panel/bots-panel.component
     ForgottPasswordComponent,
     ChessboardComponent,
     NewChessboardComponent,
-    BotsPanelComponent
+    BotsPanelComponent,
+    ProfileInfoComponent,
   ],
   imports: [
     BrowserModule,

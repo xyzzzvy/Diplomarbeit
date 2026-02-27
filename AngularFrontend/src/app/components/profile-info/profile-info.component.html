@@ -1,0 +1,12 @@
+<div class="profile-container">
+  <img
+    class="profile-image"
+    [src]="profileImageUrl"
+    [alt]="profileName"
+  />
+
+  <div class="profile-text">
+    <h3>{{ profileName }}</h3>
+    <p *ngIf="profileSubline">{{ profileSubline }}</p>
+  </div>
+</div>

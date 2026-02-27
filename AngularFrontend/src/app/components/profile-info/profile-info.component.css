@@ -1,0 +1,28 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  gap: 12px;
+  padding: 5px;
+  background-color: var(--accent-dark);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.profile-image {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-text h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.profile-text p {
+  margin: 0;
+  color: gray;
+  font-size: 0.7rem;
+}
