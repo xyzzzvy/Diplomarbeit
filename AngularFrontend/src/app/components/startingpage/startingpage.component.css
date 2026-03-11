@@ -1,0 +1,40 @@
+.startpage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.logo-img {
+  width: 400px;
+  margin: 0 auto 16px;
+  display: block;
+  image-rendering: pixelated;  /* passt zum Pixel-Style */
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
+  background-color: #111;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.headline {
+  font-size: 50px;
+  margin: 0;
+}
+
+.modes {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 50px;
+  margin-top: 20px;
+}

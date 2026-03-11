@@ -1,0 +1,18 @@
+<div class="startpage">
+  <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+
+  <h1 class="headline">We offer:</h1>
+
+  <div class="modes">
+    <app-modecard *ngFor="let mode of modes"
+                  [title]="mode.title"
+                  [shortText]="mode.shortText"
+                  [longText]="mode.longText"
+                  [route]="mode.route"></app-modecard>
+  </div>
+
+  <div class="auth-buttons">
+    <button routerLink="/login" class="pixel-btn">Login</button>
+    <button routerLink="/createAccount" class="pixel-btn">Register</button>
+  </div>
+</div>

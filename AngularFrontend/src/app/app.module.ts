@@ -21,6 +21,8 @@ import { ChessboardComponent } from './components/chessboard/chessboard.componen
 import { NewChessboardComponent} from './components/new-chessboard/new-chessboard.component';
 import { BotsPanelComponent } from './components/bots-panel/bots-panel.component';
 import { ProfileInfoComponent} from './components/profile-info/profile-info.component';
+import { StartingpageComponent } from './components/startingpage/startingpage.component';
+import { ModecardComponent } from './components/startingpage/modecard/modecard.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ProfileInfoComponent} from './components/profile-info/profile-info.comp
     NewChessboardComponent,
     BotsPanelComponent,
     ProfileInfoComponent,
+    StartingpageComponent,
+    ModecardComponent,
   ],
   imports: [
     BrowserModule,
