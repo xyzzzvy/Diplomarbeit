@@ -1,0 +1,16 @@
+<div class="mini-board-frame pixel-box">
+  <div class="mini-board">
+    <div class="mini-row" *ngFor="let row of board; let r = index">
+      <div class="mini-square"
+           *ngFor="let cell of row; let c = index"
+           [class.dark]="isDark(r, c)">
+        <span *ngIf="cell"
+              class="mini-piece"
+              [class.white]="isWhitePiece(cell)"
+              [class.black]="!isWhitePiece(cell)">
+          {{ cell }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

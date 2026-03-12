@@ -1,13 +1,3 @@
-.startpage {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding: 40px;
-}
-
 .logo-img {
   width: 400px;
   margin: 0 auto 16px;
@@ -20,27 +10,92 @@
   border-radius: 8px;
 }
 
-.headline {
-  font-size: 70px;
-  margin: 0;
+.startpage {
+  min-height: 100vh;
+  padding: 30px 40px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
 
+/* obere Zeile */
+.top-section {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 40px;
+}
+
+/* links */
+.top-left {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+}
+
+.top-right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 180px;
+}
+
+/* mitte */
+.top-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.auth-btn {
+  min-width: 180px;
+  min-height: 72px;
+  font-size: 34px !important;
+  padding: 18px 26px !important;
+}
+
+.top-right .auth-btn {
+  width: 200px;
+}
+
+/* headline */
+.headline {
+  text-align: center;
+  margin: 0;
+  font-size: 48px;
+}
+
+/* boxen */
 .modes {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1600px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(5, minmax(220px, 1fr));
   gap: 24px;
   align-items: start;
 }
 
-.auth-buttons {
-  display: flex;
-  gap: 50px;
-  margin-top: 20px;
-}
-
+/* responsive */
 @media (max-width: 1400px) {
+  .top-section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .top-left,
+  .top-center,
+  .top-right {
+    justify-content: center;
+    width: 100%;
+  }
+
   .modes {
     grid-template-columns: repeat(3, minmax(240px, 1fr));
   }
@@ -50,10 +105,27 @@
   .modes {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
+
+  .headline {
+    font-size: 38px;
+  }
+
+  .auth-btn {
+    min-width: 160px;
+    font-size: 28px !important;
+  }
 }
 
 @media (max-width: 600px) {
   .modes {
     grid-template-columns: 1fr;
+  }
+
+  .logo-box {
+    width: 220px;
+  }
+
+  .headline {
+    font-size: 30px;
   }
 }

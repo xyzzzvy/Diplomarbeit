@@ -23,6 +23,7 @@ import { BotsPanelComponent } from './components/bots-panel/bots-panel.component
 import { ProfileInfoComponent} from './components/profile-info/profile-info.component';
 import { StartingpageComponent } from './components/startingpage/startingpage.component';
 import { ModecardComponent } from './components/startingpage/modecard/modecard.component';
+import { MiniChessPreviewComponent } from './components/startingpage/mini-chess-preview/mini-chess-preview.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ModecardComponent } from './components/startingpage/modecard/modecard.c
     ProfileInfoComponent,
     StartingpageComponent,
     ModecardComponent,
+    MiniChessPreviewComponent,
   ],
   imports: [
     BrowserModule,

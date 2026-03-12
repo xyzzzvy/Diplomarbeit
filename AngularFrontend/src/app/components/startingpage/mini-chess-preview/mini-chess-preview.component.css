@@ -1,0 +1,53 @@
+.mini-board-frame {
+  padding: 16px;
+  background: #111;
+}
+
+.mini-board {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--border);
+}
+
+.mini-row {
+  display: flex;
+}
+
+.mini-square {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5daa7;
+}
+
+.mini-square.dark {
+  background: #842A3B;
+}
+
+.mini-piece {
+  font-size: 40px;
+  line-height: 1;
+  user-select: none;
+}
+
+.mini-piece.white {
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.mini-piece.black {
+  color: #111111;
+}
+
+@media (max-width: 600px) {
+  .mini-square {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mini-piece {
+    font-size: 20px;
+  }
+}

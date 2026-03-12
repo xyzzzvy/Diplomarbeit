@@ -1,8 +1,29 @@
 <div class="startpage">
-  <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
 
-  <h1 class="headline">We offer:</h1>
+  <!-- obere Zeile -->
+  <div class="top-section">
 
+    <!-- links: Logo -->
+    <div class="top-left">
+      <img src="logo.png" alt="Chess AI mate Logo" class="logo-img">
+    </div>
+
+    <!-- mitte: animiertes Mini-Schachbrett -->
+    <div class="top-center">
+      <app-mini-chess-preview></app-mini-chess-preview>
+    </div>
+
+    <!-- rechts: Login / Register -->
+    <div class="top-right">
+      <button routerLink="/login" class="pixel-btn auth-btn">Login</button>
+      <button routerLink="/createAccount" class="pixel-btn auth-btn">Register</button>
+    </div>
+
+  </div>
+
+  <h1 class="headline">What we offer</h1>
+
+  <!-- Modus-Boxen -->
   <div class="modes">
     <app-modecard *ngFor="let mode of modes"
                   [title]="mode.title"
@@ -11,8 +32,4 @@
                   [route]="mode.route"></app-modecard>
   </div>
 
-  <div class="auth-buttons">
-    <button routerLink="/login" class="pixel-btn">Login</button>
-    <button routerLink="/createAccount" class="pixel-btn">Register</button>
-  </div>
 </div>
