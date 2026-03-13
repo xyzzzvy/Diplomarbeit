@@ -11,7 +11,7 @@ export class StartingpageComponent {
     {
       title: 'Play vs Bots',
       shortText: 'Train against AI opponents',
-      longText: 'Play chess against different AI bots with varying difficulty levels. This mode allows you to practice your strategies, improve your decision making and learn from mistakes without the pressure of playing against a real opponent. It is ideal for beginners as well as experienced players who want to refine their skills.',
+      longText: 'Play chess against different AI bots with varying difficulty levels. This mode allows you to practice your strategies, improve your decision making and learn from mistakes without the pressure of playing against a real opponent.',
       route: '/playAgainstBots'
     },
     {

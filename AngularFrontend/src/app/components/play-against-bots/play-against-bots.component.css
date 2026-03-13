@@ -22,10 +22,11 @@
 .friends {
   flex: 1;
   display: flex;
-  flex-direction: column;   /* WICHTIG */
-  align-items: center;      /* horizontal zentriert */
-  justify-content: center;  /* vertikal zentriert */
-  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
 }
 
 
@@ -127,9 +128,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 230px;
   width: 100%;
   max-width: 1400px;
+  gap: 150px;
+  margin-top: 0px;
 }
 
 /* =========================================
