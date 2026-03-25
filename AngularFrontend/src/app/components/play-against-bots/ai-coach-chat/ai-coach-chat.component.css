@@ -1,7 +1,4 @@
 .coach-chat {
-  width: 320px;
-  min-height: 620px;
-  max-height: 80vh;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -73,9 +70,7 @@
 }
 
 .chat-input {
-  width: 100%;
   resize: none;
-  min-height: 110px;
   background: #0a0a0a;
   color: var(--text);
   border: 2px solid var(--border);
@@ -87,7 +82,6 @@
 }
 
 .chat-send-btn {
-  width: 100%;
   font-size: 22px !important;
   padding: 14px 20px !important;
 }
