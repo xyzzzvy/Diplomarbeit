@@ -6,7 +6,6 @@ import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import cookieParser from 'cookie-parser';
 
-
 import {
     registerUser,
     loginUser
@@ -14,6 +13,9 @@ import {
 import { registerChessRoutes } from './chess-backend.js';
 import { registerAIRoutes } from "./ai-backend.js";
 
+// WICHTIG: Neue Imports für WebSockets
+import http from 'http';
+import { initializeWebSocket } from './websocket.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -170,14 +172,24 @@ app.post('/api/auth/login', async (req, res) => {
 registerChessRoutes(app)
 registerAIRoutes(app)
 
-// Server starten
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server läuft auf Port ${port}`);
+// --- ÄNDERUNGEN HIER UNTEN ---
+
+// 1. HTTP-Server explizit mit der Express-App erstellen
+const server = http.createServer(app);
+
+// 2. WebSocket-Server mit dem HTTP-Server initialisieren
+initializeWebSocket(server);
+
+// 3. Server starten (server.listen statt app.listen!)
+server.listen(port, '0.0.0.0', () => {
+    console.log(`🚀 Server (inkl. WebSockets) läuft auf Port ${port}`);
 });
 
 // Sicherer Shutdown
 process.on('SIGINT', async () => {
     console.log("Server wird beendet...");
-    await end();
+    // Stelle sicher, dass die Funktion end() irgendwo definiert oder importiert ist,
+    // falls du hier Datenbankverbindungen schließt.
+    if (typeof end === 'function') await end();
     process.exit(0);
 });
