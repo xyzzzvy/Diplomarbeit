@@ -15,6 +15,7 @@ import {ForgottPasswordComponent} from './components/login/forgott-password/forg
 import {ChessboardComponent} from './components/chessboard/chessboard.component';
 import {BotsPanelComponent} from './components/bots-panel/bots-panel.component';
 import { StartingpageComponent } from './components/startingpage/startingpage.component';
+import {MultiplayerChessboardComponent} from './components/multiplayer-chessboard/multiplayer-chessboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'startingpage', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'chessboard', component: ChessboardComponent },
   { path: 'botsPanel', component: BotsPanelComponent },
   { path: 'startingpage', component: StartingpageComponent },
+  { path: 'multiplayerchessboard', component:MultiplayerChessboardComponent },
 ];
 
 @NgModule({

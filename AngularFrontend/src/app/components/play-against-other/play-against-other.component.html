@@ -6,7 +6,15 @@
   </header>
 
   <main class="friends">
-    <h1>Play online</h1>
-    <app-new-chessboard></app-new-chessboard>
+    <h1>Play against Bots</h1>
+
+    <button (click)="queueUp()" [disabled]="isQueued" class="queue-btn">
+      {{ isQueued ? 'Waiting for opponent...' : 'Queue Up' }}
+    </button>
+
+    <div class="game-area">
+      <app-multiplayer-chessboard></app-multiplayer-chessboard>
+    </div>
   </main>
+
 </div>

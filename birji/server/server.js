@@ -15,7 +15,7 @@ import { registerAIRoutes } from "./ai-backend.js";
 
 // WICHTIG: Neue Imports für WebSockets
 import http from 'http';
-import { initializeWebSocket } from './websocket.js';
+import { initializeWebSocket } from './websockets.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
