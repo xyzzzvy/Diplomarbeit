@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/multiplayer-chessboard/multiplayer-chessboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/multiplayer-chessboard/multiplayer-chessboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/multiplayer-chessboard/multiplayer-chessboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/multiplayer-chessboard/multiplayer-chessboard.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-other/play-against-other.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/birji/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/birji/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/birji/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/birji/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/birji/server/websockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/birji/server/websockets.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +132,7 @@
       <workItem from="1772196576350" duration="469000" />
       <workItem from="1774439721094" duration="2577000" />
       <workItem from="1774870580011" duration="3463000" />
-      <workItem from="1775585199113" duration="5188000" />
+      <workItem from="1775585199113" duration="7247000" />
     </task>
     <servers />
   </component>

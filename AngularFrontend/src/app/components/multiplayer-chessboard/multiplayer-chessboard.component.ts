@@ -27,31 +27,46 @@ export class MultiplayerChessboardComponent implements OnInit {
     this.connectSocket();
   }
 
+  // --- Coordinate helpers ---
+  getActualCoords(row: number, col: number): { row: number, col: number } {
+    if (this.myColor === 'white') {
+      return { row, col };
+    } else {
+      return { row: 7 - row, col: 7 - col };
+    }
+  }
+
+  getCell(row: number, col: number): string {
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    return this.board[r][c];
+  }
+
+  // --- Socket logic ---
   connectSocket() {
     this.socketService.connect();
 
     this.socketService.on('connected', (id: string) => {
-      console.log('Connected with ID:', id);
+      console.log('🔌 connected:', id);
       this.connected = true;
     });
 
     this.socketService.on('waiting_for_opponent', (data: any) => {
-      console.log(data.message);
+      console.log('⌛', data.message);
       this.roomId = data.roomId;
     });
 
     this.socketService.on('game_started', (data: any) => {
-      console.log('Game started!', data);
+      console.log('🎮 Game started!', data);
       this.roomId = data.roomId;
       this.gameId = data.gameId;
       this.fen = data.fen;
       this.possibleMoves = data.moves;
-      this.updateBoardFromFEN();
       this.currentTurn = data.turn;
+      this.updateBoardFromFEN();
     });
 
     this.socketService.on('assign_color', (color: 'white' | 'black') => {
-      console.log('Assigned color:', color);
+      console.log('🖌 Assigned color:', color);
       this.myColor = color;
     });
 
@@ -72,6 +87,7 @@ export class MultiplayerChessboardComponent implements OnInit {
     this.socketService.emit('join_game');
   }
 
+  // --- Board setup ---
   updateBoardFromFEN() {
     const rows = this.fen.split(' ')[0].split('/');
     this.board = rows.map(row => {
@@ -95,10 +111,14 @@ export class MultiplayerChessboardComponent implements OnInit {
     return map[f] || '';
   }
 
+  // --- Click & drag handling ---
   onPieceClick(row: number, col: number) {
-    const square = this.squareName(row, col);
-    const piece = this.board[row][col];
-    if (!piece || (this.isWhite(piece) ? 'white' : 'black') !== this.myColor) {
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    const square = this.squareName(r, c);
+    const piece = this.board[r][c];
+
+    // Only allow clicks on own pieces and if it's your turn
+    if (!piece || (this.isWhite(piece) ? 'white' : 'black') !== this.myColor || this.currentTurn !== this.myColor?.[0]) {
       this.clearSelection();
       return;
     }
@@ -115,7 +135,8 @@ export class MultiplayerChessboardComponent implements OnInit {
   }
 
   onSquareClick(row: number, col: number) {
-    const square = this.squareName(row, col);
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    const square = this.squareName(r, c);
 
     if (this.selectedSquare && this.highlightSquares.includes(square)) {
       this.sendMove(this.selectedSquare, square);
@@ -127,9 +148,10 @@ export class MultiplayerChessboardComponent implements OnInit {
   }
 
   dragStart(row: number, col: number, ev: DragEvent) {
-    const piece = this.board[row][col];
-    if (!piece || (this.isWhite(piece) ? 'white' : 'black') !== this.myColor) return;
-    ev.dataTransfer?.setData('text/plain', this.squareName(row, col));
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    const piece = this.board[r][c];
+    if (!piece || (this.isWhite(piece) ? 'white' : 'black') !== this.myColor || this.currentTurn !== this.myColor?.[0]) return;
+    ev.dataTransfer?.setData('text/plain', this.squareName(r, c));
     ev.dataTransfer?.setDragImage(document.createElement('img'), 0, 0);
   }
 
@@ -139,21 +161,22 @@ export class MultiplayerChessboardComponent implements OnInit {
     ev.preventDefault();
     const from = ev.dataTransfer?.getData('text/plain');
     if (!from) return;
-    const to = this.squareName(row, col);
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    const to = this.squareName(r, c);
     this.sendMove(from, to);
     this.clearSelection();
   }
 
+  // --- Send moves to server ---
   sendMove(from: string, to: string, promotion?: string) {
     if (!this.roomId) return;
-
     this.socketService.emit('send_move', {
       roomId: this.roomId,
       move: { from, to, promotion: promotion || 'q' }
     });
   }
 
-  // Helpers
+  // --- Helpers ---
   squareName(row: number, col: number) {
     const files = 'abcdefgh';
     return files[col] + (8 - row);
@@ -169,7 +192,9 @@ export class MultiplayerChessboardComponent implements OnInit {
   }
 
   highlightClass(row: number, col: number) {
-    return this.highlightSquares.includes(this.squareName(row, col)) ? 'highlight' : '';
+    const { row: r, col: c } = this.getActualCoords(row, col);
+    const square = this.squareName(r, c);
+    return this.highlightSquares.includes(square) ? 'highlight' : '';
   }
 
   getPieceImage(piece: string) {

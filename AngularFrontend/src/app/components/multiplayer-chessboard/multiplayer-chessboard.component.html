@@ -9,7 +9,7 @@
          (dragover)="allowDrop($event)"
          (drop)="drop(r, c, $event)"
          (click)="onSquareClick(r, c)">
-      <img *ngIf="cell" [src]="getPieceImage(cell)" alt="">
+      <img *ngIf="getCell(r, c)" [src]="getPieceImage(getCell(r, c))" alt="">
     </div>
   </div>
 </div>
