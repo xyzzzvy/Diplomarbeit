@@ -2,7 +2,11 @@
   <h2 class="bots-title">Bots</h2>
 
   <div class="bots-list">
-    <button class="bot-card" type="button" *ngFor="let bot of bots">
+    <button class="bot-card" type="button"
+            *ngFor="let bot of bots"
+            (click)="selectBot(bot)"
+            [class.active]="bot === selectedBot">
+
       <img class="bot-avatar" [src]="bot.avatar" [alt]="bot.name + ' avatar'">
 
       <div class="bot-meta">
@@ -16,8 +20,9 @@
     </button>
   </div>
 
-  <button class="pixel-btn play-btn" type="button">
+  <button class="pixel-btn play-btn" type="button"
+          (click)="onPlayClicked()"
+          [disabled]="!selectedBot">
     Play
   </button>
 </aside>
-

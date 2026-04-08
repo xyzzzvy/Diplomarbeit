@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChessService } from '../../services/chess.service';
-import { AIService} from '../../services/ai.service';
+import { AIService } from '../../services/ai.service';
+import { BotCard } from '../bots-panel/bots-panel.component'; // Pfad ggf. anpassen!
 
 @Component({
   selector: 'bot-chessboard',
@@ -9,14 +10,17 @@ import { AIService} from '../../services/ai.service';
   standalone: false
 })
 export class BotChessboardComponent implements OnInit {
-  board: string[][] = [];                 // 8x8 board array
-  fen: string = '';                       // current FEN
-  possibleMoves: any[] = [];              // from chess.js backend
-  highlightSquares: string[] = [];        // squares to highlight
+  board: string[][] = [];
+  fen: string = '';
+  possibleMoves: any[] = [];
+  highlightSquares: string[] = [];
   selectedSquare: string | null = null;
-  gameId: string = 'test-game';           // example, can be dynamic
-  currentTurn: 'w' | 'b' = 'w';          // track whose turn
+  gameId: string = 'test-game';
+  currentTurn: 'w' | 'b' = 'w';
   promotionData: { from: string, to: string } | null = null;
+
+  // 🔥 Speichert den aktuell gewählten Bot aus dem Panel
+  currentOpponent: BotCard | null = null;
 
   constructor(
     private chessService: ChessService,
@@ -27,42 +31,62 @@ export class BotChessboardComponent implements OnInit {
     this.loadGame();
   }
 
-  makeAIMove() {
-    // Only move if it's black's turn (engine side)
-    if (this.currentTurn !== 'b') return;
-
-    this.aiService.getBestMove(this.fen).subscribe(res => {
-      const bestMove = res.best_move;
-
-      if (!bestMove) return;
-
-      const from = bestMove.substring(0, 2);
-      const to = bestMove.substring(2, 4);
-      const promotion = bestMove.length > 4 ? bestMove[4] : undefined;
-
-      this.chessService.move(this.gameId, from, to, promotion || 'q')
-        .subscribe(moveRes => {
-          this.fen = moveRes.fen;
-          this.possibleMoves = moveRes.moves;
-          this.updateBoardFromFEN();
-          this.currentTurn = moveRes.turn as 'w' | 'b';
-        });
-    });
+  // 🔥 Wird vom Parent-HTML aufgerufen (myBoard.setBot($event))
+  setBot(bot: BotCard) {
+    this.currentOpponent = bot;
+    console.log("Neuer Gegner festgelegt:", this.currentOpponent.name);
+    // Optional: Hier könntest du das Spiel neu starten, wenn ein neuer Bot gewählt wird.
+    // this.loadGame();
   }
 
-  // Load initial board from backend
+  // 🔥 Die magische IF-Abfrage
+  makeAIMove() {
+    if (this.currentTurn !== 'b') return;
+
+    if (!this.currentOpponent) {
+      alert("Bitte wähle zuerst einen Bot aus der Liste aus und klicke auf Play!");
+      return;
+    }
+
+    if (this.currentOpponent.name === 'Bot 2') {
+      // Stockfish
+      this.aiService.getBestMoveBot2(this.fen).subscribe(res => {
+        this.executeMove(res.best_move);
+      });
+    } else {
+      // AlphaZero (Default / Bot 1)
+      this.aiService.getBestMoveBot1(this.fen).subscribe(res => {
+        this.executeMove(res.best_move);
+      });
+    }
+  }
+
+  // Hilfsfunktion, damit wir den Move-Code nicht 2x schreiben müssen
+  executeMove(bestMove: string) {
+    if (!bestMove) return;
+    const from = bestMove.substring(0, 2);
+    const to = bestMove.substring(2, 4);
+    const promotion = bestMove.length > 4 ? bestMove[4] : undefined;
+
+    this.chessService.move(this.gameId, from, to, promotion || 'q')
+      .subscribe(moveRes => {
+        this.fen = moveRes.fen;
+        this.possibleMoves = moveRes.moves;
+        this.updateBoardFromFEN();
+        this.currentTurn = moveRes.turn as 'w' | 'b';
+      });
+  }
+
   loadGame() {
     this.chessService.getBaseBoard().subscribe(res => {
       this.fen = res.fen;
       this.possibleMoves = res.moves;
-      this.gameId = res.id;            // temporary game ID
+      this.gameId = res.id;
       this.updateBoardFromFEN();
       this.currentTurn = res.turn as 'w' | 'b';
     });
   }
 
-
-  // Convert FEN to 2D board array
   updateBoardFromFEN() {
     const rows = this.fen.split(' ')[0].split('/');
     this.board = rows.map(row => {
@@ -78,7 +102,6 @@ export class BotChessboardComponent implements OnInit {
     });
   }
 
-  // Map FEN char to piece symbol
   pieceFromFEN(f: string): string {
     const map: Record<string, string> = {
       p: '♟', r: '♜', n: '♞', b: '♝', q: '♛', k: '♚',
@@ -87,7 +110,6 @@ export class BotChessboardComponent implements OnInit {
     return map[f] || '';
   }
 
-  // Clicking a piece
   onPieceClick(row: number, col: number) {
     const square = this.squareName(row, col);
     const piece = this.board[row][col];
@@ -95,37 +117,26 @@ export class BotChessboardComponent implements OnInit {
       this.clearSelection();
       return;
     }
-
-    // Toggle selection
     if (this.selectedSquare === square) {
       this.clearSelection();
       return;
     }
-
     this.selectedSquare = square;
     this.highlightSquares = this.possibleMoves
       .filter(m => m.from === square)
       .map(m => m.to);
   }
 
-  // Click on a square: if a piece is already selected and this square is a legal move, make the move
   onSquareClick(row: number, col: number) {
     const square = this.squareName(row, col);
-    //console.log('Click on square:', square, 'Selected:', this.selectedSquare, 'Highlights:', this.highlightSquares);
-
     if (this.selectedSquare && this.highlightSquares.includes(square)) {
-      //console.log('Making move:', this.selectedSquare, '->', square);
       this.makeMove(this.selectedSquare, square);
       this.clearSelection();
       return;
     }
-
     this.onPieceClick(row, col);
   }
 
-
-
-  // Drag & Drop
   dragStart(row: number, col: number, ev: DragEvent) {
     const piece = this.board[row][col];
     if (!piece || this.isWhite(piece) !== (this.currentTurn === 'w')) return;
@@ -144,12 +155,10 @@ export class BotChessboardComponent implements OnInit {
     this.clearSelection();
   }
 
-  // Make move via ChessService
   makeMove(from: string, to: string, promotion?: string) {
     const move = this.possibleMoves.find(m => m.from === from && m.to === to);
     if (!move) return;
 
-    // If this move includes promotion flag from chess.js
     if (move.promotion && !promotion) {
       this.openPromotionDialog(from, to);
       return;
@@ -162,12 +171,10 @@ export class BotChessboardComponent implements OnInit {
         this.updateBoardFromFEN();
         this.currentTurn = res.turn as 'w' | 'b';
 
-        // 🔥 AFTER PLAYER MOVE → CALL AI
         setTimeout(() => this.makeAIMove(), 200);
       });
   }
 
-  // Helpers
   squareName(row: number, col: number) {
     const files = 'abcdefgh';
     return files[col] + (8 - row);
@@ -201,13 +208,7 @@ export class BotChessboardComponent implements OnInit {
 
   selectPromotion(piece: 'q' | 'r' | 'b' | 'n') {
     if (!this.promotionData) return;
-
-    this.makeMove(
-      this.promotionData.from,
-      this.promotionData.to,
-      piece
-    );
-
+    this.makeMove(this.promotionData.from, this.promotionData.to, piece);
     this.promotionData = null;
   }
 }

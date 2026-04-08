@@ -8,14 +8,19 @@
   <main class="friends">
     <h1>Play against Bots</h1>
     <div class="game-area">
-      <bot-chessboard></bot-chessboard>
+      <bot-chessboard #myBoard></bot-chessboard>
     </div>
   </main>
 
   <div class="sidepanel-container">
     <button id="toggle-btn" (click)="switchToggle()">TEST TOGGLE</button>
-    <app-bots-panel *ngIf="toggledPanel == 'bots'" class="sidepanel-content"></app-bots-panel>
+
+    <app-bots-panel
+      *ngIf="toggledPanel == 'bots'"
+      class="sidepanel-content"
+      (play)="myBoard.setBot($event)">
+    </app-bots-panel>
+
     <app-ai-coach-chat *ngIf="toggledPanel == 'chat'" class="sidepanel-content"></app-ai-coach-chat>
   </div>
-
 </div>

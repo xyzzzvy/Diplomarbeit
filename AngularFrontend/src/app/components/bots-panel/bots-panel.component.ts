@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
-type BotCard = {
+export type BotCard = {
   name: string;
   level: string;
   avatar: string;
@@ -11,28 +11,26 @@ type BotCard = {
   selector: 'app-bots-panel',
   standalone: false,
   templateUrl: './bots-panel.component.html',
-  styleUrl: './bots-panel.component.css'
+  styleUrls: ['./bots-panel.component.css']
 })
 export class BotsPanelComponent {
-  // Platzhalter
+  @Output() play = new EventEmitter<BotCard>();
+
   bots: BotCard[] = [
-    {
-      name: 'Bot 1',
-      level: 'Easy',
-      avatar: 'assets/bot.png',
-      status: 'online'
-    },
-    {
-      name: 'Bot 2',
-      level: 'Medium',
-      avatar: 'assets/bot.png',
-      status: 'online'
-    },
-    {
-      name: 'Bot 3',
-      level: 'Hard',
-      avatar: 'assets/bot.png',
-      status: 'offline'
-    }
+    { name: 'Bot 1', level: 'Easy', avatar: 'assets/bot.png', status: 'online' },
+    { name: 'Bot 2', level: 'Hard', avatar: 'assets/bot.png', status: 'online' },
+    { name: 'Bot 3', level: 'Medium', avatar: 'assets/bot.png', status: 'offline' }
   ];
+
+  selectedBot: BotCard | null = null;
+
+  selectBot(bot: BotCard) {
+    this.selectedBot = bot;
+  }
+
+  onPlayClicked() {
+    if (this.selectedBot) {
+      this.play.emit(this.selectedBot);
+    }
+  }
 }

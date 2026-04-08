@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 
 export class AIService {
   private ollamaApiUrl = "http://localhost:11434/api/generate"
-  private pythonApiUrl = "http://localhost:8000/predict";
+  private pythonApiUrlBot1 = "http://localhost:8000/predict";
+  private pythonApiUrlBot2 = "http://localhost:8000/predictsto";
 
   private http = inject(HttpClient);
 
@@ -46,12 +47,22 @@ ${metadata ? metadata : ""}
 Coach:`;
   }
 
-  public getBestMove(fen: string, simulations: number = 400): Observable<any> {
+  public getBestMoveBot1(fen: string, simulations: number = 400): Observable<any> {
     const body = {
       fen: fen,
       simulations: simulations
-    };
+    }
 
-    return this.http.post<any>(this.pythonApiUrl, body);
+    return this.http.post<any>(this.pythonApiUrlBot1, body);
+  }
+
+
+  public getBestMoveBot2(fen: string, simulations: number = 400): Observable<any> {
+    const body = {
+      fen: fen,
+      simulations: simulations
+    }
+
+    return this.http.post<any>(this.pythonApiUrlBot2, body);
   }
 }

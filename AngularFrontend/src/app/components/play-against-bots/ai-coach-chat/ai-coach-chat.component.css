@@ -1,38 +1,71 @@
-.coach-chat {
+/* 1. Main Container */
+.chat-container { /* or .coach-chat depending on what you named it */
   display: flex;
   flex-direction: column;
   gap: 16px;
   background: #111;
+
+  /* CHANGE THESE: Let it inherit the strict boundaries from the parent */
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* 2. Header */
 .chat-header {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #333;
 }
 
 .chat-title {
   margin: 0;
   font-size: 30px;
   text-align: center;
+  color: #fff;
 }
 
 .chat-subtitle {
   margin: 0;
   font-size: 18px;
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #888);
 }
 
+/* 3. Messages Scroll Area */
 .chat-messages {
-  flex: 1;
+  /* CRITICAL FIX: Forces flexbox to scroll instead of stretching */
+  flex: 1 1 0;
+  min-height: 0;
   overflow-y: auto;
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-right: 4px;
+  gap: 16px;
+  padding-right: 8px; /* Room for the custom scrollbar */
 }
 
+/* Custom Blocky Scrollbar */
+.chat-messages::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border: 2px solid var(--border, #333);
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #444;
+  border: 2px solid #0a0a0a;
+}
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* 4. Individual Messages */
 .chat-message {
   display: flex;
   flex-direction: column;
@@ -40,48 +73,104 @@
 }
 
 .message-label {
-  font-size: 16px;
-  opacity: 0.85;
+  font-size: 14px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* CRITICAL FIX: Keeps text inside the box */
 .message-bubble {
-  border: 2px solid var(--border);
+  border: 2px solid var(--border, #333);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 0; /* Sharp corners for pixel style */
   line-height: 1.5;
   font-size: 18px;
   background: #1a1a1a;
+  color: #ddd;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Text constraint properties */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
+/* User Message Colors */
+.chat-message.user .message-label {
+  color: #ff9d00;
+}
 .chat-message.user .message-bubble {
   background: #2a1b1b;
+  border-color: #5a3b3b;
 }
 
+/* Coach Message Colors */
+.chat-message.coach .message-label {
+  color: #00d2ff;
+}
 .chat-message.coach .message-bubble {
   background: #161616;
+  border-color: #2a2a2a;
 }
 
+/* 5. Input Area */
 .chat-input-area {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-top: 2px solid var(--border);
+  border-top: 2px dashed #333;
   padding-top: 14px;
 }
 
 .chat-input {
   resize: none;
   background: #0a0a0a;
-  color: var(--text);
-  border: 2px solid var(--border);
-  border-radius: 8px;
+  color: var(--text, #fff);
+  border: 2px solid var(--border, #333);
   padding: 12px;
   font-family: var(--font-pixel);
   font-size: 18px;
   line-height: 1.5;
+  outline: none;
+}
+
+.chat-input:focus {
+  border-color: #555;
 }
 
 .chat-send-btn {
   font-size: 22px !important;
   padding: 14px 20px !important;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  border: 2px solid #444;
+  font-family: var(--font-pixel);
+  transition: all 0.2s ease;
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  background: #333;
+  border-color: #666;
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Optional: Typing Indicator Animation */
+.typing-indicator p {
+  margin: 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
 }

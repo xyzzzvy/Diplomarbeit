@@ -1,36 +1,34 @@
-<div class="coach-chat pixel-box" aria-label="AI Coach chat">
-  <div class="chat-header">
-    <h2 class="chat-title">AI Coach</h2>
-    <p class="chat-subtitle">Ask about your next move</p>
-  </div>
+<aside class="chat-container pixel-box">
+  <h2 class="chat-title">AI Coach</h2>
 
   <div class="chat-messages">
-    <div
-      class="chat-message"
-      *ngFor="let message of messages"
-      [class.user]="message.sender === 'user'"
-      [class.coach]="message.sender === 'coach'">
 
-      <div class="message-label">
-        {{ message.sender === 'user' ? 'You' : 'Coach' }}
-      </div>
-
-      <div class="message-bubble">
-        {{ message.text }}
-      </div>
+    <div *ngFor="let msg of messages" class="message-bubble" [ngClass]="msg.sender">
+      <strong>{{ msg.sender === 'coach' ? 'Coach' : 'You' }}:</strong>
+      <p>{{ msg.text }}</p>
     </div>
+
+    <div *ngIf="isLoading" class="message-bubble coach typing-indicator">
+      <strong>Coach:</strong>
+      <p>Thinking...</p>
+    </div>
+
   </div>
 
   <div class="chat-input-area">
-    <textarea
+    <input
+      type="text"
+      class="pixel-input"
       [(ngModel)]="question"
-      class="chat-input"
-      rows="4"
-      placeholder="Ask the AI Coach about your next move...">
-    </textarea>
-
-    <button class="pixel-btn chat-send-btn" type="button" (click)="sendMessage()">
+      (keyup.enter)="sendMessage()"
+      [disabled]="isLoading"
+      placeholder="Ask the coach for advice..."
+    >
+    <button
+      class="pixel-btn"
+      (click)="sendMessage()"
+      [disabled]="isLoading || !question.trim()">
       Send
     </button>
   </div>
-</div>
+</aside>

@@ -136,15 +136,23 @@
 
 .sidepanel-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Note: If you want the toggle button ON TOP of the chat, change this to column! */
   width: 30%;
   height: 100vh;
+
+  /* ADD THIS: Locks the sidebar container to exactly 100vh */
+  overflow: hidden;
 }
 
 .sidepanel-content {
   display: flex;
+  flex-direction: column; /* Match the column layout of the chat */
   width: 100%;
   height: 100%;
+
+  /* ADD THESE 2 LINES: This stops the Angular Host Element from stretching */
+  overflow: hidden;
+  min-height: 0;
 }
 
 #toggle-btn {

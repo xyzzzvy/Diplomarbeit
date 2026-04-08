@@ -1,23 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-
-type PieceColor = 'white' | 'black';
-type Piece = { type: string; color: PieceColor };
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-play-against-bots',
-  standalone: false,
   templateUrl: './play-against-bots.component.html',
-  styleUrl: './play-against-bots.component.css'
+  styleUrls: ['./play-against-bots.component.css'],
+  standalone: false
 })
 export class PlayAgainstBotsComponent {
-  toggledPanel :string = "bots";
+  toggledPanel: string = 'bots';
 
-  public switchToggle() {
-    if(this.toggledPanel == "bots"){
-      this.toggledPanel = "chat";
-    } else {
-      this.toggledPanel = "bots";
-    }
+  switchToggle() {
+    this.toggledPanel = this.toggledPanel === 'bots' ? 'chat' : 'bots';
   }
-
 }

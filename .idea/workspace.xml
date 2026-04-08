@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="484def02-f8f4-4821-b403-54e6b54690ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularFrontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/birji/v2/server_ki.py" beforeDir="false" afterPath="$PROJECT_DIR$/birji/v2/server_ki.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/bot-chessboard/bot-chessboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/bot-chessboard/bot-chessboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/bots-panel/bots-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/bots-panel/bots-panel.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/bots-panel/bots-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/bots-panel/bots-panel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/ai-coach-chat/ai-coach-chat.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/components/play-against-bots/play-against-bots.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularFrontend/src/app/services/ai.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +141,7 @@
       <workItem from="1774870580011" duration="3463000" />
       <workItem from="1775585199113" duration="7247000" />
       <workItem from="1775633372686" duration="924000" />
-      <workItem from="1775635182009" duration="1222000" />
+      <workItem from="1775635182009" duration="5316000" />
     </task>
     <servers />
   </component>
