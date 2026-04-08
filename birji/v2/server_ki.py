@@ -8,13 +8,16 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, Dict, List
 
-# ---------------------------
-# 1. HELPER & MODEL (Basis)
-# ---------------------------
 PROMO_MAP = {None: 0, chess.KNIGHT: 1, chess.BISHOP: 2, chess.ROOK: 3, chess.QUEEN: 4}
 REV_PROMO = {v: k for k, v in PROMO_MAP.items()}
 ACTION_SIZE = 64 * 64 * 5
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+#app = FastAPI()
+
 
 
 def move_to_index(move):
@@ -86,7 +89,7 @@ class MCTS:
         self.device = device
         self.cpuct = 1.5
 
-    def run(self, board, simulations=400):
+    def run(self, board, simulations=1200):
         # Root Node erstellen
         root = Node(0, board.turn)
 
@@ -209,6 +212,19 @@ async def lifespan(app: FastAPI):
 
 # App mit Lifespan initialisieren
 app = FastAPI(title="AlphaZero MCTS API", lifespan=lifespan)
+
+# Define which origins are allowed to call your API
+origins = [
+    "http://localhost:4200",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class FenRequest(BaseModel):
     fen: str
