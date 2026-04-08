@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class AIService {
   private ollamaApiUrl = "http://localhost:11434/api/generate"
-  private pythonApiUrl = "";
+  private pythonApiUrl = "http://localhost:8000/predict";
 
   private http = inject(HttpClient);
 
@@ -44,5 +44,14 @@ metadata:
     return `User: ${question}
 ${metadata ? metadata : ""}
 Coach:`;
+  }
+
+  public getBestMove(fen: string, simulations: number = 400): Observable<any> {
+    const body = {
+      fen: fen,
+      simulations: simulations
+    };
+
+    return this.http.post<any>(this.pythonApiUrl, body);
   }
 }

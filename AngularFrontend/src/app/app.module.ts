@@ -26,6 +26,7 @@ import { ModecardComponent } from './components/startingpage/modecard/modecard.c
 import { MiniChessPreviewComponent } from './components/startingpage/mini-chess-preview/mini-chess-preview.component';
 import { AiCoachChatComponent } from './components/play-against-bots/ai-coach-chat/ai-coach-chat.component';
 import {MultiplayerChessboardComponent} from './components/multiplayer-chessboard/multiplayer-chessboard.component';
+import {BotChessboardComponent} from './components/bot-chessboard/bot-chessboard.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {MultiplayerChessboardComponent} from './components/multiplayer-chessboar
     MiniChessPreviewComponent,
     AiCoachChatComponent,
     MultiplayerChessboardComponent,
+    BotChessboardComponent,
   ],
   imports: [
     BrowserModule,
